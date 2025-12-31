@@ -1,0 +1,14 @@
+defaults:
+  - _self_
+  - load          : egad
+  - pre_prosessing: default
+  - generate      : default
+
+# ------------------------------------------
+model_name: "egad_A0"
+# ------------------------------------------
+n_approach: [0.3, 0.0,  1.0]
+# ----
+gripper_pose:
+  translation:  [0.067006, 0.037205, -0.078979] # cluster 1
+  rotvec      : [0.        , 0.        ,0. ]

@@ -1,0 +1,11 @@
+[tool.black]
+line-length = 88  # Default.
+target-version = ["py312"]
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.ruff]
+extend-exclude = ["third_party", "dist", "build"]
+lint.select = ["E", "F", "I", "W"]
+lint.ignore = ["E501"]

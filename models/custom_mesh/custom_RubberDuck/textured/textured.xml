@@ -1,0 +1,23 @@
+<mujoco model="textured">
+  <asset>
+    <mesh file="textured_collision_0.obj"/>
+    <mesh file="textured_collision_1.obj"/>
+    <mesh file="textured_collision_2.obj"/>
+    <mesh file="textured_collision_3.obj"/>
+    <mesh file="textured_collision_4.obj"/>
+    <mesh file="textured_collision_5.obj"/>
+    <mesh file="textured_collision_6.obj"/>
+  </asset>
+  <worldbody>
+    <body name="textured">
+      <freejoint/>
+      <geom mesh="textured_collision_0" rgba="0.3159491920113988 0.2908850961647258 0.9165128047782218 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_1" rgba="0.6788057225040969 0.5819552493386121 0.10495396029650073 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_2" rgba="0.7739676777928808 0.9231043132246212 0.5658087543481884 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_3" rgba="0.7717023646681956 0.19564249719552962 0.17089770564118456 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_4" rgba="0.6631151815349423 0.3004297999594614 0.9767137651229685 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_5" rgba="0.6811708890213871 0.3918059831159282 0.9136462986580166 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_6" rgba="0.37171388632538616 0.431029390630957 0.6615180541098757 1" class="object_collision" density="50.0"/>
+    </body>
+  </worldbody>
+</mujoco>

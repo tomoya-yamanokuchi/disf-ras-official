@@ -1,0 +1,17 @@
+<mujoco model="manual_box">
+  <worldbody>
+    <body name="textured" pos="0.015 -0.015 0.015">
+      <!-- ISF でいう object frame O。自由物体として扱う -->
+      <freejoint/>
+
+      <!-- 箱の半サイズ: (hx, hy, hz) -->
+      <!-- 例: gap = 0.04, size_y = 0.03, size_z = 0.03 なら
+           hx = gap/2 = 0.02, hy = size_y/2 = 0.015, hz = size_z/2 = 0.015 -->
+      <geom name="manual_box_geom"
+            type="box"
+            size="0.015 0.015 0.015"
+            class="object_collision"
+            rgba="0.2 0.8 0.2 1"/>
+    </body>
+  </worldbody>
+</mujoco>

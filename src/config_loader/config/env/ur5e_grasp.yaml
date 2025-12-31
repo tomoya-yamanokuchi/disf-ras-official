@@ -1,0 +1,56 @@
+defaults:
+  - option    : default_option
+  - renderer  : default_renderer
+
+  - viewer    : visual_viewer
+  # - viewer    : collision_viewer
+
+  - camera    : arm_grasp
+  - pre_grasp : default_pre_grasp
+  - table     : default
+# ----------------------
+env_name : "ur5e_grasp"
+
+end_effector_site_name : "canonical_fingertip_surafece"
+
+d_bias : 0.02
+
+reaching_threshold:
+  finger:
+    # pos: 0.005
+    # vel: 0.001
+    velocity    : 0.001
+    stable_time : 0.3
+
+arm_body_names : [
+    "shoulder_link",  # 1
+    "upper_arm_link", # 2
+    "forearm_link",   # 3
+    "wrist_1_link",   # 4
+    "wrist_2_link",   # 5
+    "wrist_3_link",   # 6
+]
+
+arm_joint_names : [
+    "shoulder_pan_joint",  # 1
+    "shoulder_lift_joint", # 2
+    "elbow_joint",         # 3
+    "wrist_1_joint",       # 4
+    "wrist_2_joint",       # 5
+    "wrist_3_joint",       # 6
+]
+
+arm_actuator_names : [
+  "shoulder_pan" , # 1
+  "shoulder_lift", # 2
+  "elbow"        , # 3
+  "wrist_1"      , # 4
+  "wrist_2"      , # 5
+  "wrist_3"      , # 6
+]
+
+hand_joint_names : [
+  "finger_joint2",
+]
+
+

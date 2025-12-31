@@ -1,0 +1,336 @@
+<mujoco model="iiwa14">
+  <compiler angle="radian" meshdir="assets" autolimits="true"  texturedir="assets"/>
+
+  <option integrator="implicitfast" noslip_iterations="0" cone="elliptic" impratio="4" timestep="1e-5">
+    <!-- <flag multiccd="enable"/> -->
+  </option>
+
+
+  <default>
+    <default class="iiwa">
+
+      <material specular="0.5" shininess="0.25"/>
+
+      <joint axis="0 0 1"/>
+      <general gaintype="fixed" biastype="affine" gainprm="2000" biasprm="0 -2000 -200"/>
+
+      <default class="joint1">
+        <joint range="-2.96706 2.96706"/>
+        <general ctrlrange="-2.96706 2.96706"/>
+        <default class="joint2">
+          <joint range="-2.0944 2.0944"/>
+          <general ctrlrange="-2.0944 2.0944"/>
+        </default>
+
+      </default>
+      <default class="joint3">
+        <joint range="-3.05433 3.05433"/>
+        <general ctrlrange="-3.05433 3.05433"/>
+      </default>
+
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2" material="gray"/>
+
+        <default class="fingertip_LR_visual_marker">
+          <geom type="box" size="0.0005 0.0129 0.05968" group="5"/>
+        </default>
+
+      </default>
+
+      <default class="collision">
+        <!-- <geom type="mesh" group="3" /> -->
+        <!-- <geom type="mesh" group="3" condim="6" friction="10 5 1e-1"/> -->
+        <!-- <geom type="mesh" group="3" condim="6" friction="10 5e-1 1e-4"/> -->
+        <geom type="mesh" group="3" condim="6" friction="100 1e-1 1e-2"/>
+
+        <default class="fingertip">
+          <geom type="box" size="0.005 0.05968 0.0129" pos="0 0 0.0365" quat="1 0 0 0"  friction="1000 1 1"/>
+        </default>
+
+      </default>
+
+      <default class="object_collision">
+        <!-- <geom type="mesh" group="4" condim="6" friction="0.1 5e-3 1e-4"/> -->
+        <!-- <geom type="mesh" group="4" condim="6" friction="10 0.1 0.1"/> -->
+        <!-- <geom type="mesh" group="4" condim="6" friction="10 5e-1 1e-4"/> -->
+        <geom type="mesh" group="4" condim="6" friction="1000 1 1"/>
+      </default>
+
+      <site size="0.001" rgba="1 0 0 1" group="4"/>
+
+      <!-- hand -->
+      <default class="umi_gripper">
+        <!-- <joint frictionloss="0.1" armature="0.1" /> -->
+        <position kp="1000" />
+
+        <default class="screw">
+          <geom type="cylinder" size="0.0035 0.0035 0.01" material="black" contype="0" conaffinity="0" />
+        </default>
+
+      <default class="finger">
+        <joint axis="1 0 0" type="slide" range="0 0.04"/>
+      </default>
+
+        <default class="marker">
+          <geom type="box" size="0.009 0.009 0.00001" material="white" contype="0" conaffinity="0" mass="0.0" />
+        </default>
+        <default class="finger_holder_geom">
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" material="white" />
+        </default>
+
+        <default class="canonical_fingertip_surafece_site">
+            <site type="box" size="0.0129 0.001 0.05968" rgba="1 1 0 0.5"/>
+        </default>
+      </default>
+
+    </default>
+
+
+
+
+  </default>
+
+  <asset>
+    <material class="iiwa" name="gray_black" rgba="0.2 0.2 0.2 1"/>
+    <material class="iiwa" name="gray" rgba="0.4 0.4 0.4 1"/>
+    <material class="iiwa" name="light_gray" rgba="0.6 0.6 0.6 1"/>
+    <material class="iiwa" name="black" rgba="0 0 0 1"/>
+    <material class="iiwa" name="orange" rgba="1 0.423529 0.0392157 1"/>
+
+    <mesh file="link_0.obj"/>
+    <mesh file="link_1.obj"/>
+    <mesh file="link_2_orange.obj"/>
+    <mesh file="link_2_grey.obj"/>
+    <mesh file="link_3.obj"/>
+    <mesh file="band.obj"/>
+    <mesh file="kuka.obj"/>
+    <mesh file="link_4_orange.obj"/>
+    <mesh file="link_4_grey.obj"/>
+    <mesh file="link_5.obj"/>
+    <mesh file="link_6_orange.obj"/>
+    <mesh file="link_6_grey.obj"/>
+    <mesh file="link_7.obj"/>
+
+
+    <!-- hand -->
+    <mesh file="base_link.stl" />
+    <mesh file="left_finger_holder.stl" />
+    <mesh file="left_finger.stl" />
+    <mesh file="right_finger_holder.stl" />
+    <mesh file="right_finger.stl" />
+    <mesh file="gopro.stl" />
+
+    <texture name="right_aruco_sticker" type="2d" file="right_aruco_sticker.png" />
+    <texture name="left_aruco_sticker" type="2d" file="left_aruco_sticker.png" />
+    <material name="Right_Aruco_Base_Sticker" texture="right_aruco_sticker" />
+    <material name="Left_Aruco_Base_Sticker" texture="left_aruco_sticker" />
+
+    <material name="mirror" rgba="0 0 0 1" texrepeat="5 5" reflectance="1.0" />
+    <material name="white" rgba="1 1 1 1" />
+  </asset>
+
+  <worldbody>
+    <light name="top" pos="0 0 2" mode="trackcom"/>
+
+    <body name="kuka" childclass="iiwa" pos="-0.5 0 0">
+      <inertial mass="5" pos="-0.1 0 0.07" diaginertia="0.05 0.06 0.03"/>
+      <geom class="visual"    mesh="link_0"/>
+      <geom class="collision" mesh="link_0" />
+      <body name="link1" pos="0 0 0.1575">
+        <inertial mass="5.76" pos="0 -0.03 0.12" diaginertia="0.0333 0.033 0.0123"/>
+        <joint name="joint1" class="joint1"/>
+        <geom class="visual"    mesh="link_1"/>
+        <geom class="collision" mesh="link_1"/>
+        <body name="link2" pos="0 0 0.2025" quat="0 0 1 1">
+          <inertial mass="6.35" pos="0.0003 0.059 0.042" diaginertia="0.0305 0.0304 0.011" quat="0 0 1 1"/>
+          <joint name="joint2" class="joint2"/>
+          <geom class="visual" material="orange" mesh="link_2_orange"/>
+          <geom class="collision" mesh="link_2_orange"/>
+          <geom class="visual" mesh="link_2_grey"/>
+          <geom class="collision" mesh="link_2_grey"/>
+          <body name="link3" pos="0 0.2045 0" quat="0 0 1 1">
+            <inertial mass="3.5" pos="0 0.03 0.13" diaginertia="0.025 0.0238 0.0076"/>
+            <joint name="joint3" class="joint1"/>
+
+            <!-- visual -->
+            <geom class="visual" mesh="link_3"/>
+            <geom class="visual" material="light_gray" mesh="band"/>
+            <geom class="visual" material="black" mesh="kuka"/>
+            <!-- collision -->
+            <geom class="collision" mesh="link_3"/>
+            <geom class="collision" mesh="band"/>
+            <geom class="collision" mesh="kuka"/>
+
+            <body name="link4" pos="0 0 0.2155" quat="1 1 0 0">
+              <inertial mass="3.5" pos="0 0.067 0.034" diaginertia="0.017 0.0164 0.006" quat="1 1 0 0"/>
+              <joint name="joint4" class="joint2"/>
+
+              <!-- visual -->
+              <geom class="visual" material="orange" mesh="link_4_orange"/>
+              <geom class="visual" mesh="link_4_grey"/>
+              <!-- collision -->
+              <geom class="collision" mesh="link_4_orange"/>
+              <geom class="collision" mesh="link_4_grey"/>
+
+              <body name="link5" pos="0 0.1845 0" quat="0 0 1 1">
+                <inertial mass="3.5" pos="0.0001 0.021 0.076" diaginertia="0.01 0.0087 0.00449"/>
+                <joint name="joint5" class="joint1"/>
+
+                <!-- visual -->
+                <geom class="visual" mesh="link_5"/>
+                <geom class="visual" material="light_gray" mesh="band"/>
+                <geom class="visual" material="black" mesh="kuka"/>
+                <!-- collision -->
+                <geom class="collision" mesh="link_5"/>
+                <geom class="collision" mesh="band"/>
+                <geom class="collision" mesh="kuka"/>
+
+                <body name="link6" pos="0 0 0.2155" quat="1 1 0 0">
+                  <inertial mass="1.8" pos="0 0.0006 0.0004" diaginertia="0.0049 0.0047 0.0036" quat="1 1 0 0"/>
+                  <joint name="joint6" class="joint2"/>
+
+                  <!-- visual -->
+                  <geom class="visual" material="orange" mesh="link_6_orange"/>
+                  <geom class="visual" mesh="link_6_grey"/>
+                  <!-- collision -->
+                  <geom class="collision" mesh="link_6_orange"/>
+                  <geom class="collision" mesh="link_6_grey"/>
+
+                  <body name="link7" pos="0 0.081 0" quat="0 0 1 1">
+                    <inertial mass="1.2" pos="0 0 0.02" diaginertia="0.001 0.001 0.001"/>
+                    <joint name="joint7" class="joint3"/>
+
+                    <geom class="visual" mesh="link_7"/>
+                    <geom class="collision" mesh="link_7"/>
+
+                    <body name="hand" pos="0 0 0.05" quat="0.70710678  0. 0. 0.70710678">
+
+                      <!-- Gripper Camera -->
+                      <camera name="gripper_gopro" pos="0 -0.092 0.04" quat="0 1 0 0" mode="fixed" fovy="155" />
+
+                      <!-- Linear Rail -->
+                      <geom name="linear_guide_rail" type="box" pos="0 -0.002 0.062" size="0.08 0.003 0.004" material="light_gray"
+                        class="visual" />
+
+                      <!-- Mirrors -->
+                      <geom name="left_mirror" type="box" pos="-0.069 -0.057 0.04" size="0.03 0.0187 0.0001" quat="0.828 0 0.5605 0"
+                        material="mirror" class="visual" />
+                      <geom name="right_mirror" type="box" pos="0.069 -0.057 0.04" size="0.03 0.0187 0.0001" quat="0.828 0 -0.5605 0"
+                        material="mirror" class="visual" />
+
+                      <!-- Base Link -->
+                      <geom mesh="base_link" class="visual" material="white" />
+                      <geom mesh="base_link" class="collision" />
+                      <geom name="left_center_base_screw" pos="-0.076 -0.018 0.036" quat="-1 1 0 0" class="screw" />
+                      <geom name="right_center_base_screw" pos="0.076 -0.018 0.036" quat="-1 1 0 0" class="screw" />
+                      <geom name="left_back_base_screw" pos="-0.0137 -0.018 -0.018" quat="-1 1 0 0" class="screw" />
+                      <geom name="right_back_base_screw" pos="0.0137 -0.018 -0.018" quat="-1 1 0 0" class="screw" />
+
+                      <!-- GoPro Camera -->
+                      <geom pos="0.01965 -0.07875 -0.0187" quat="0 0 -1 1" mesh="gopro" class="visual" material="gray_black" />
+                      <geom pos="0.01965 -0.07875 -0.0187" quat="0 0 -1 1" mesh="gopro" class="collision" />
+
+                      <!-- canonical gripper surface -->
+                      <body name="canonical_fingertip_surafece">
+                          <site class="canonical_fingertip_surafece_site" name="canonical_fingertip_surafece" pos="0 0 0.14" quat="1 0 0 1"/>
+                      </body>
+
+                      <!-- Left Finger -->
+                      <body name="left_finger_holder" quat="1 1 0 0">
+                        <!-- <geom name="left_screw_back_outside"    pos="-0.0515 0.07 0.012" class="screw" />
+                        <geom name="left_screw_back_inside"     pos="-0.0615 0.07 0.012" class="screw" />
+                        <geom name="left_screw_middle_outside"  pos="-0.0768 0.0835 0.012" class="screw" />
+                        <geom name="left_screw_middle_inside"   pos="-0.047 0.0835 0.012" class="screw" />
+                        <geom name="left_screw_front"           pos="-0.0764 0.119 0.012" class="screw" /> -->
+                        <!-- <geom name="left_rail_block" class="visual" type="box" pos="-0.051 0.063 0.006" size="0.009 0.012 0.004" material="gray"/> -->
+                        <geom name="left_marker" pos="-0.02 0.088 0.0164" material="Left_Aruco_Base_Sticker" class="marker" />
+                        <inertial pos="-0.0613355 0.104073 -0.0013157" quat="0.49913 0.411547 -0.543302 0.53509" mass="0.080081"
+                          diaginertia="0.000104597 0.000102992 1.90532e-05" />
+                        <joint name="finger_joint1" class="finger" axis="-1 0 0"/>
+                        <geom mesh="left_finger_holder" class="visual" material="white" pos="0.0415 0 0"/>
+                        <geom mesh="left_finger_holder" class="collision"               pos="0.0415 0 0"/>
+                        <geom pos="-0.0 0.0779 -0.0159" quat="0 0 -1 1" mesh="left_finger" class="visual" material="orange"/>
+                        <!-- <geom pos="-0.0 0.0779 -0.0159" quat="0 0 -1 1" mesh="left_finger" class="collision" /> -->
+
+                        <geom class="fingertip" name="left_fingertip_center" rgba="0 0.3 0 1" pos="-0.005 0.14 -0.003"/>
+                        <geom class="fingertip_LR_visual_marker" name="fingertip_left_visual_marker" quat="0 0 -1 1" pos="-0.0005 0.14 -0.003" rgba="0 0.6 0 0.5" />
+                        <!-- <geom class="fingertip_LR_visual_marker" name="fingertip_left_visual_marker" quat="0 0 -1 1" pos="-0 0.14 -0.003" rgba="0 0.6 0 1" /> -->
+                      </body>
+
+                      <!-- Right Finger -->
+                      <body name="right_finger_holder" quat="1 1 0 0">
+                        <!-- <geom name="right_screw_back_outside" pos="0.0515 0.07 0.012" class="screw" />
+                        <geom name="right_screw_back_inside" pos="0.0615 0.07 0.012" class="screw" />
+                        <geom name="right_screw_middle_outside" pos="0.0764 0.0835 0.012" class="screw" />
+                        <geom name="right_screw_middle_inside" pos="0.047 0.0835 0.012" class="screw" />
+                        <geom name="right_screw_front" pos="0.0764 0.119 0.012" class="screw" /> -->
+                        <!-- <geom name="right_rail_block" class="visual" type="box" pos="0.0095 0.063 0.006" size="0.009 0.012 0.004" material="gray"/> -->
+                        <geom name="right_marker" pos="0.02 0.088 0.0164" material="Right_Aruco_Base_Sticker" class="marker" />
+                        <inertial pos="0.0613353 0.104073 -0.00131574" quat="0.535092 0.543308 -0.41154 0.499127" mass="0.080081"
+                          diaginertia="0.000104597 0.000102992 1.90532e-05" />
+                        <joint name="finger_joint2" class="finger" axis="1 0 0"/>
+                        <geom mesh="right_finger_holder" class="visual" material="white" pos="-0.0415 0 0"/>
+                        <geom mesh="right_finger_holder" class="collision"               pos="-0.0415 0 0"/>
+                        <geom pos="0 0.0779 0.0099" quat="1 1 0 0" mesh="right_finger" class="visual" material="orange" />
+                        <!-- <geom pos="0 0.0779 0.0099" quat="1 1 0 0" mesh="right_finger" class="collision" /> -->
+
+                        <geom class="fingertip"      name="right_fingertip_center" rgba="0.3 0 0 1" pos="0.005 0.14 -0.003"/>
+                        <geom class="fingertip_LR_visual_marker" name="fingertip_right_visual_marker" quat="0 0 -1 1" pos="0.0005 0.14 -0.003" rgba="0.6 0 0 0.5" />
+                        <!-- <geom class="fingertip_LR_visual_marker" name="fingertip_right_visual_marker" quat="0 0 -1 1" pos="0 0.14 -0.003" rgba="0.6 0 0 1" /> -->
+
+
+                      </body>
+
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <contact>
+    <exclude body1="kuka" body2="link1"/>
+    <exclude body1="kuka" body2="link2"/>
+    <exclude body1="kuka" body2="link3"/>
+    <exclude body1="link1" body2="link3"/>
+    <exclude body1="link3" body2="link5"/>
+    <exclude body1="link4" body2="link7"/>
+    <exclude body1="link5" body2="link7"/>
+
+    <exclude body1="hand" body2="left_finger_holder"/>
+    <exclude body1="hand" body2="right_finger_holder"/>
+  </contact>
+
+  <tendon>
+    <fixed name="split">
+      <joint joint="finger_joint1" coef="0.5"/>
+      <joint joint="finger_joint2" coef="0.5"/>
+    </fixed>
+  </tendon>
+
+  <equality>
+    <joint joint1="finger_joint1" joint2="finger_joint2" solimp="0.95 0.99 0.001" solref="0.005 1"/>
+  </equality>
+
+  <actuator>
+    <general name="actuator1" joint="joint1" class="joint1" gainprm="4500" biasprm="0 -4500 -450"/>
+    <general name="actuator2" joint="joint2" class="joint2" gainprm="4500" biasprm="0 -4500 -450"/>
+    <general name="actuator3" joint="joint3" class="joint1" gainprm="3500" biasprm="0 -3500 -350"/>
+    <general name="actuator4" joint="joint4" class="joint2" gainprm="3500" biasprm="0 -3500 -350"/>
+    <general name="actuator5" joint="joint5" class="joint1" gainprm="2000" biasprm="0 -2000 -200" forcerange="-12 12"/>
+    <general name="actuator6" joint="joint6" class="joint2" gainprm="2000" biasprm="0 -2000 -200" forcerange="-12 12"/>
+    <general name="actuator7" joint="joint7" class="joint3" gainprm="2000" biasprm="0 -2000 -200" forcerange="-12 12"/>
+    <!-- <general class="umi_gripper" name="actuator_finger" tendon="split" forcerange="-1000 1000" ctrlrange="0 0.04"
+      gainprm="100 0 0" biasprm="0 -100 -10"/> -->
+    <general class="umi_gripper" name="actuator_finger" tendon="split" forcerange="-100 100" ctrlrange="0 0.04"
+      gainprm="100 0 0" biasprm="0 -100 -10"/>
+  </actuator>
+
+  <keyframe>
+    <key name="home" qpos="0 -0 0 -1.5708 0 1.5708 0      0.04 0.04     0 0 0.196   1 0 0 0" ctrl="0 -0 0 -1.5708 0 1.5708 0    0.04"/>
+  </keyframe>
+</mujoco>

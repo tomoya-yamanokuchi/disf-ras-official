@@ -1,0 +1,27 @@
+defaults:
+  - _self_
+  - load          : ycb
+  - pre_prosessing: default
+  - generate      : default
+# ------------------------------------------
+model_name: "058_golf_ball"
+# ------------------------------------------
+
+grasp:
+  panda:
+    n_approach: [1, 0, 1]
+    gripper_pose:
+      translation: [-0.002957, 0.000813, -0.024736] # 0/1
+      rotvec     : [0, 0, 0]
+
+  ur5e:
+    n_approach: [1, 0, 1]
+    gripper_pose:
+      translation: [-0.002957, 0.000813, -0.024736] # 0/1
+      rotvec     : [0, 0, 0]
+
+  kuka:
+    n_approach: [0, 0, 1]
+    gripper_pose:
+      translation: [-0.002957, 0.000813, -0.024736] # 0/1
+      rotvec     : [0, 0, 0]

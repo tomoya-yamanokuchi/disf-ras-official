@@ -1,0 +1,13 @@
+[flake8]
+exclude = .git, ./venv-obj2mjcf
+max-line-length = 80
+ignore =
+    # whitespace before colon (black default)
+    E203,
+    # line too long (<n> characters)
+    E501,
+    # line break before binary operator
+    W503,
+
+per-file-ignores =
+    */__init__.py: F401

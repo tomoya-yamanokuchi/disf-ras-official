@@ -1,0 +1,30 @@
+defaults:
+  - _self_
+  - visualize   : data_saving # default
+  - verbose     : default
+  - gripper_pose: default
+  - object_pose : default
+  - save        : default
+
+tag:
+method_name : "cma"
+# ----
+gripper_normal: [0, 1, 0]
+hand_plane_z  : [0, 0, 1]
+# ----
+alpha         : 0.1 # normal
+beta          : 0.85 # approach
+# ----
+gamma         : 0
+min_num_corres: 4
+# ------------------------------
+eta              : 0
+dtheta0          : 0.04
+delta_d_est_init : 0.0
+# ------------------------------
+max_iter : 100
+max_ipfo_count : 100
+# ------------------------------
+delta_e : 1e-4 # IPFO
+epsilon : 1e-4 # ISF
+# ------------------------------

@@ -1,0 +1,27 @@
+defaults:
+  - _self_
+  - load          : ycb
+  - pre_prosessing: default
+  - generate      : default
+# ------------------------------------------
+model_name: "029_plate"
+
+
+grasp:
+  panda:
+    n_approach: [0, 1, 0] # side
+    gripper_pose:
+      translation:  [0.061310, -0.026551, -0.011663]
+      rotvec     :  [-1.57, 0, 0]
+
+  ur5e:
+    n_approach: [1, -1, 0]
+    gripper_pose:
+      translation: [-0.031545, 0.087065, -0.014114] # 4/15
+      rotvec     : [-1.57, 0, 0]
+
+  kuka:
+    n_approach: [0, 1, 0] # side
+    gripper_pose:
+      translation:  [0.061310, -0.026551, -0.011663]
+      rotvec     :  [-1.57, 0, 0]

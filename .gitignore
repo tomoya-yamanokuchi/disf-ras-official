@@ -1,0 +1,17 @@
+**/__pycache__/
+**/packages/
+*.egg-info/
+*.pyc
+*.zip
+*.dat
+*.pkl
+*.pyl
+outcmaes/
+models/ycb/0*
+.vscode/
+**/lib/
+**/ur3e_real_grap/
+**/ur3e_grasp/
+**/webcam_control/
+**/real/
+**/analysis/

@@ -1,0 +1,12 @@
+name    : "panda"
+# ------------------------------
+# num_fingertip_surface_points : 25
+# ------------------------------
+distance_between_points : 0.002 # [m]
+# ------------------------------
+gripper_z_width : 0.018 # [m]
+gripper_x_width : 0.018 # [m]
+# ------------------------------
+d_min   : 0.011 # geomの初期位置依存
+d_max   : 0.091 # geomの初期位置依存
+d0      : 0.091 # geomの初期位置依存

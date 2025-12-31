@@ -1,0 +1,27 @@
+defaults:
+  - _self_
+  - load          : ycb
+  - pre_prosessing: default
+  - generate      : default
+# ------------------------------------------
+model_name: "052_extra_large_clamp"
+# ------------------------------------------
+
+grasp:
+  panda:
+    n_approach: [0, -1, 0.5]
+    gripper_pose:
+      translation: [0.010702, 0.017076, -0.091257] # 6/7
+      rotvec     : [0, 0, 1.57]
+
+  ur5e:
+    n_approach: [0, 0, 1]
+    gripper_pose:
+      translation: [0.013847, -0.013251, -0.182105] # 6/10
+      rotvec     : [0, 0, 1.57]
+
+  kuka:
+    n_approach: [0, -1, 0.5]
+    gripper_pose:
+      translation: [0.010702, 0.017076, -0.091257] # 6/7
+      rotvec     : [ 0.61394313, -0.61394313,  1.48218982]

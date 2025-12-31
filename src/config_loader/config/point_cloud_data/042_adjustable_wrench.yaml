@@ -1,0 +1,27 @@
+defaults:
+  - _self_
+  - load          : ycb
+  - pre_prosessing: default
+  - generate      : default
+# ------------------------------------------
+model_name: "042_adjustable_wrench"
+# ------------------------------------------
+
+grasp:
+  panda:
+    n_approach: [1, 1, 0]
+    gripper_pose:
+      translation: [0.000153, 0.032911, -0.006953] # 4/7
+      rotvec     : [1.57, 0, 0]
+
+  ur5e:
+    n_approach: [1, 0.5, 0]
+    gripper_pose:
+      translation: [0.000153, 0.032911, -0.006953] # 4/7
+      rotvec     : [1.57, 0, 0]
+
+  kuka:
+    n_approach: [0, 1, 0]
+    gripper_pose:
+      translation: [0.002942, -0.030315, -0.004762] # 0/3
+      rotvec     : [-1.57079633, 0.        , 0.        ]

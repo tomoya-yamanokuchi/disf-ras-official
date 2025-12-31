@@ -1,0 +1,3 @@
+pos_threshold     : 0.06 # [m]
+ori_threshold_deg : 30   # [deg]
+push_threshold_z  : 0.01 # [m]

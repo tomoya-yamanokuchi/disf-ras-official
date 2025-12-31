@@ -1,0 +1,13 @@
+# offset_for_mujoco : [0, 0, -0.005] #　多分objectの高さ方向のoffset位置
+offset_for_mujoco:  [0, 0, 0.]
+
+# --------------------------------
+translation  : [0, 0, 0]
+# --------------------------------
+# rotvec_degree: [0., 180, 30.] # banana
+# rotvec_degree: [-60.96811997, 178.86097551, 2.80515457] # banana center
+# rotvec_degree: [-45, 180, 0] # banana edge
+# ------
+rotvec_degree: [-60.96811997, 178.86097551, 2.80515457] # banana center 006_mustard_bottle
+
+

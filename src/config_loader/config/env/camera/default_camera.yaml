@@ -1,0 +1,8 @@
+default_free_camera: False
+# ----
+lookat    : [0, 0, 0.2] # カメラの視線中心位置座標
+distance  : 0.4         # 中心からのカメラ距離[m]
+azimuth   : 30          # 水平方向の角度 (正面から見る)
+elevation : -35         # 垂直方向の角度 (水平視点)
+
+

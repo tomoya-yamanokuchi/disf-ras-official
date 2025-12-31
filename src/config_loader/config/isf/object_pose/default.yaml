@@ -1,0 +1,17 @@
+# ============ position ============
+translation        : [0, 0, 0.2]
+# pos          : [-0.4, -0.2, 0.2]
+# pos          : [0, 0, 0]
+# pos          : [0, 0, 0.2]
+# pos          : [0, 0.15, 0.2]
+# pos          : [0.1, 0, 0.2]
+# translation : [0.5, -2, 1.0]
+# ============ rotation ============
+# rotvec_degree: [15, 0, 0]
+rotvec_degree: [0, 0, 0]
+# rotvec_degree: [0, 0, 90]
+# rotvec_degree: [0, 90, 0]
+# rotvec_degree: [90, 0, 0]
+# rotvec_degree: [320, 90, 220]
+# rotvec_degree: [45, 45, 45]
+# rotvec_degree: [-180, 24, -90]

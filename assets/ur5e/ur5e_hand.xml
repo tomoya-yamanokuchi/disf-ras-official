@@ -1,0 +1,155 @@
+<mujoco model="robotiq_hande">
+
+  <!-- <compiler angle="radian" meshdir="assets" autolimits="true" />
+  <option cone="elliptic" impratio="10" viscosity="0.1"/>
+  <statistic center="0 0 0.05" extent="0.3"/> -->
+
+  <compiler angle="radian" meshdir="assets" autolimits="true"/>
+
+  <option integrator="implicitfast"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="60" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3"
+      markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+
+    <!--  -->
+    <mesh name="hande" file="hande.stl" />
+    <mesh name="coupler" file="coupler.stl" />
+    <mesh name="right_finger" file="finger_1.stl" />
+    <mesh name="left_finger" file="finger_2.stl" />
+  </asset>
+
+  <default>
+    <default class="ur5e">
+
+        <default class="hande_visual">
+            <geom type="mesh" contype="0" conaffinity="0" group="2" rgba="0.6 0.6 0.6 1"/>
+
+            <default class="finger_visual">
+                <geom type="mesh" contype="0" conaffinity="0" group="2" rgba="0.6 0.6 0.6 1" pos="-0.025 0 0"/>
+            </default>
+        </default>
+
+        <default class="hande_collision">
+            <geom group="3" condim="6" friction="10 5e-1 1e-4"/>
+            <!--  -->
+            <default class="hande_base">
+                <geom type="cylinder" size="0.0375 0.05" pos="0 0 0.05"/>
+            </default>
+
+            <default class="finger">
+                <joint axis="1 0 0" type="slide" range="0 0.025"/>
+            </default>
+
+            <default class="finger_base">
+                <geom type="box" size="0.0105 0.0024 0.01325" pos="0.0084 0 0.01325" quat="1 0 0 1"/>
+            </default>
+            <default class="finger_connect">
+                <geom type="box" size="0.0105 0.0054 0.002" pos="0.0054 0 0.0285" quat="1 0 0 1"/>
+            </default>
+            <default class="fingertip">
+                <geom type="box" size="0.0105 0.003 0.010" pos="0.003 0 0.0365" quat="1 0 0 1"/>
+            </default>
+
+        </default>
+
+        <default class="canonical_fingertip_surafece_site">
+          <site type="box" size="0.0105 0.003 0.010" rgba="1 1 0 0.5" pos="0 0 0.0365" quat="1 0 0 -1"/>
+        </default>
+
+    </default>
+  </default>
+
+  <visual>
+    <global azimuth="120" elevation="-20" />
+    <headlight diffuse="0.6 0.6 0.6" specular="0 0 0" />
+    <rgba haze="0.15 0.25 0.35 1" />
+  </visual>
+
+  <statistic meansize="0.1" extent="1" center="4 0 0" />
+  <worldbody>
+    <!-- <light pos="0 0 1.5" dir="0 0 -1" directional="true" /> -->
+
+    <light pos="0 0 1"/>
+    <light pos="0 -0.2 1" dir="0 0.2 -0.8" directional="true"/>
+    <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
+
+    <!-- <site size="0.002" pos="0 0 0.3" name="anchor"/>
+    <body name="object" pos="0 0 0.25">
+      <freejoint/>
+      <geom type="box" size="0.015 0.015 0.015" rgba=".5 .7 .5 1" friction=".5" priority="1"/>
+      <site size="0.002" pos="0.015 0.015 0.015" name="hook"/>
+    </body> -->
+
+    <!--  -->
+    <body name="hande_mount" pos="0 0 0">
+        <body name="hand" childclass="ur5e" quat="1 0 0 -1">
+            <geom class="hande_visual" mesh="coupler" rgba="0.1 0.1 0.1 1"/>
+            <geom class="hande_visual" mesh="hande"   rgba="0.1 0.1 0.1 1"/>
+            <geom class="hande_base"/>
+            <!-- <site name="tcp" pos="0 0 0.135" rgba="0 0 0 0.1" size="0.001"/> -->
+
+            <body name="canonical_fingertip_surafece" pos="0 0 0.099">
+              <site class="canonical_fingertip_surafece_site" name="canonical_fingertip_surafece"/>
+            </body>
+
+            <body name="left_finger" pos="0 0 0.099">
+                <inertial pos="0.02262 -0.00759 0.00738" quat="0.871952 0.0369732 -0.211073 0.440205" mass="0.03804" diaginertia="1.22763e-05 1.22763e-05 1.22763e-05"/>
+                <joint name="finger_joint1" class="finger"/>
+                <!-- collision -->
+                <geom class="finger_base"    name="finger_base_left"    rgba="0 0.4 0 1"/>
+                <geom class="finger_connect" name="finger_connect_left" rgba="0 0.2 0 1"/>
+                <geom class="fingertip"      name="fingertip_left"      rgba="0 0.6 0 1"/>
+                <!-- visual -->
+                <geom class="finger_visual" mesh="left_finger" quat="0 0 0 1"/>
+            </body>
+
+            <body name="right_finger" pos="0 0 0.099" quat="0 0 0 1">
+                <inertial pos="-0.02262 0.00759 0.00738" quat="0.871952 -0.0369732 0.211073 0.440205" mass="0.03804" diaginertia="1.22763e-05 1.22763e-05 1.22763e-05"/>
+                <joint name="finger_joint2" class="finger"/>
+                <!-- collision -->
+                <geom class="finger_base"    name="finger_base_right"    rgba="0.4 0 0 1"/>
+                <geom class="finger_connect" name="finger_connect_right" rgba="0.2 0 0 1"/>
+                <geom class="fingertip"      name="fingertip_right"      rgba="0.6 0 0 1"/>
+                <!-- visual -->
+                <geom class="finger_visual"   mesh="right_finger" />
+            </body>
+        </body>
+    </body>
+
+  </worldbody>
+
+  <contact>
+    <exclude body1="hand" body2="left_finger"/>
+    <exclude body1="hand" body2="right_finger"/>
+  </contact>
+
+  <tendon>
+    <fixed name="split">
+      <joint joint="finger_joint1" coef="0.5"/>
+      <joint joint="finger_joint2" coef="0.5"/>
+    </fixed>
+  </tendon>
+
+  <equality>
+    <joint joint1="finger_joint1" joint2="finger_joint2" solimp="0.95 0.99 0.001" solref="0.005 1"/>
+  </equality>
+
+  <actuator>
+    <!-- Remap original ctrlrange (0, 0.04) to (0, 255): 0.04 * 100 / 255 = 0.01568627451 -->
+    <!-- <general name="actuator_finger" class="ur5e" tendon="split"
+        ctrlrange="0 255" forcerange="-200 200" gaintype="affine" biastype="affine"
+        gainprm="0.00980392156862745" biasprm="0 -100 -10"/> -->
+    <general class="ur5e" name="actuator_finger" tendon="split" forcerange="-100 100" ctrlrange="0 0.025"
+      gainprm="100 0 0" biasprm="0 -100 -10"/>
+  </actuator>
+
+</mujoco>

@@ -1,0 +1,27 @@
+defaults:
+  - _self_
+  - load          : ycb
+  - pre_prosessing: default
+  - generate      : default
+# ------------------------------------------
+model_name: "037_scissors"
+# ----------------------------------------
+
+grasp:
+  panda:
+    n_approach: [0, -1, 0.5]
+    gripper_pose:
+      translation:  [-0.000728, -0.000314, -0.074277] # 2/7
+      rotvec     : [0, 0, 1.57]
+
+  ur5e:
+    n_approach: [0, 1, 0.5]
+    gripper_pose:
+      translation:  [-0.000728, -0.000314, -0.074277] # 2/7
+      rotvec     : [0, 0, 1.57]
+
+  kuka:
+    n_approach: [0, -1, 0.2]
+    gripper_pose:
+      translation:  [-0.000728, -0.000314, -0.074277] # 2/7
+      rotvec     :  [ 0.61394313,  0.61394313, -1.48218982]

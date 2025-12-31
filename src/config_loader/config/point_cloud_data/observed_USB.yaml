@@ -1,0 +1,17 @@
+defaults:
+  - _self_
+  - load          : observed
+  - pre_prosessing: observed
+  - generate      : default
+
+# ------------------------------------------
+model_name: "observed_USB"
+# ------------------------------------------
+
+grasp:
+
+  ur5e:
+    n_approach: [0., -1., 1]
+    gripper_pose:
+      translation : [0.010415, -0.001500, -0.019549]
+      rotvec      : [0, 0, 1.57        ]

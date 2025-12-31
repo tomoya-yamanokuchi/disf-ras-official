@@ -1,0 +1,119 @@
+mode         : 0 # plot
+# mode         : 1 # save
+# ------------------------
+axis_label  : False
+empty_ticks : True
+use_title   :  False
+# ------------------------
+# figsize      : [13, 13] # [6, 6]
+figsize       : [8, 8]
+# figsize       : [6, 6]
+# figsize       : [5, 5]
+# figsize       : [4, 4]
+# save_path     : "./ipfo.pdf"
+# -----------------------------
+# --- simulation save for paper ---
+elev         : 220 # 45
+azim         : -225 # -45 # 45
+# -----------------------------
+label_fontsize : 14
+# ----
+hand_origin_point_size    : 15
+hand_origin_normal_length : 0.01
+# ------
+# use_fixed_limit: True
+use_fixed_limit: False
+# # ------------ YCB object ----------------
+x_min : -0.03
+x_max :  0.2
+# ---
+y_min : -0.03
+y_max :  0.2
+# ---
+z_min : -0.03
+z_max :  0.2
+# ----------------------------
+# -------
+point_normal:
+  # ----------------
+  #      point
+  # ----------------
+  point_size:
+    target:
+      surface: 2 # 1 # 3 # 5 # 7 # 10
+      contact: 2 # 1 # 3 # 5 # 7 # 10
+      correspondence : 2 # 1.5 # 2 # 4 # 10
+    source:
+      contact       : 2 # 1 # 3 # 5 # 7 # 10
+      correspondence: 2 # 1 # 3 # 5 # 7 # 10
+  # ----------------
+  point_alpha:
+    target:
+      surface: 0.3
+      contact: 1.0
+      correspondence: 1.0
+    source:
+      contact: 1.0
+      correspondence: 1.0
+  # ----------------
+  #      normal
+  # ----------------
+  normal_length:
+    target:
+      surface: 0
+      contact: 0
+      # correspondence: 0.012
+      correspondence: 0.005 # box
+    source:
+      contact: 0
+      # correspondence: 0.012
+      correspondence: 0.005 # box
+    n_z  : 0.05
+    n_app: 0.05
+  # ----------------
+  normal_alpha:
+    target:
+      surface: 1.0
+      contact: 1.0
+      correspondence: 1.0
+    source:
+      contact: 1.0
+      correspondence: 1.0
+    n_z  : 1.0
+    n_app: 1.0
+
+  # ----------------
+  #      color
+  # ----------------
+  color:
+    target:
+      surface: 1.0
+      contact: 1.0
+      correspondence: "blue"
+    source:
+      contact_skew: {
+          "1" : "tan",      # right
+          "2" : "lightblue", # left
+      }
+      contact: {
+        "1" : "plum",      # right
+        "2" : "limegreen", # left
+      }
+      correspondence: {
+        "1" : "red",   # right
+        "2" : "green", # left
+      }
+      correspondence_skew: {
+        "1" : "darkgoldenrod",   # right
+        "2" : "teal", # left
+      }
+
+    n_z  : "darkorange"
+    n_app: "purple"
+
+  # ----------------
+  #    linestyles
+  # ----------------
+  linestyles:
+    n_z: "-"
+    n_app: "-"

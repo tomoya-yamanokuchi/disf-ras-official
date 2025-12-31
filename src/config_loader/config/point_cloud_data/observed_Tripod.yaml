@@ -1,0 +1,17 @@
+defaults:
+  - _self_
+  - load          : observed
+  - pre_prosessing: observed
+  - generate      : default
+
+# ------------------------------------------
+model_name: "observed_Tripod"
+# ------------------------------------------
+
+grasp:
+
+  ur5e:
+    n_approach: [1., 1., 0.4]
+    gripper_pose:
+      translation : [0.078323, 0.037201, -0.145716]
+      rotvec      : [-0.61394313,  1.48218982,  0.61394313]

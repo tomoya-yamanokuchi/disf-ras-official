@@ -1,0 +1,14 @@
+default_free_camera: False
+# ----
+zoom:
+  lookat    : # カメラの視線中心位置座標
+  distance  : 0.4         # 中心からのカメラ距離[m]
+  azimuth   : 230          # 水平方向の角度 (正面から見る)
+  elevation : -40         # 垂直方向の角度 (水平視点)
+
+# ----
+overview:
+  lookat    : [-0.25, 0, 0.35] # カメラの視線中心位置座標
+  distance  : 1.3         # 中心からのカメラ距離[m]
+  azimuth   : 230          # 水平方向の角度 (正面から見る)
+  elevation : -20         # 垂直方向の角度 (水平視点)

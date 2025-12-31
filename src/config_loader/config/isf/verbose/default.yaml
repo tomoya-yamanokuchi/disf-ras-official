@@ -1,0 +1,15 @@
+# visualize_call: -2 # save
+visualize_call: -1 # None
+# visualize_call: 0 # IPFO opt
+# visualize_call: 1 # IPFO init & opt
+# visualize_call: 2 # ISF loop
+# visualize_call: 3 # ISF init & opt
+# visualize_call: 4 #
+# --------------------------
+textlog:
+  criteria : False #False
+  error    : False # False
+  Rt_update: False
+  ipfo     : False
+  isf      : True # False
+  gpa      : False

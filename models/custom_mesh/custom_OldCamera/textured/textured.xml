@@ -1,0 +1,99 @@
+<mujoco model="textured">
+  <asset>
+    <mesh file="textured_collision_0.obj"/>
+    <mesh file="textured_collision_1.obj"/>
+    <mesh file="textured_collision_2.obj"/>
+    <mesh file="textured_collision_3.obj"/>
+    <mesh file="textured_collision_4.obj"/>
+    <mesh file="textured_collision_5.obj"/>
+    <mesh file="textured_collision_6.obj"/>
+    <mesh file="textured_collision_7.obj"/>
+    <mesh file="textured_collision_8.obj"/>
+    <mesh file="textured_collision_9.obj"/>
+    <mesh file="textured_collision_10.obj"/>
+    <mesh file="textured_collision_11.obj"/>
+    <mesh file="textured_collision_12.obj"/>
+    <mesh file="textured_collision_13.obj"/>
+    <mesh file="textured_collision_14.obj"/>
+    <mesh file="textured_collision_15.obj"/>
+    <mesh file="textured_collision_16.obj"/>
+    <mesh file="textured_collision_17.obj"/>
+    <mesh file="textured_collision_18.obj"/>
+    <mesh file="textured_collision_19.obj"/>
+    <mesh file="textured_collision_20.obj"/>
+    <mesh file="textured_collision_21.obj"/>
+    <mesh file="textured_collision_22.obj"/>
+    <mesh file="textured_collision_23.obj"/>
+    <mesh file="textured_collision_24.obj"/>
+    <mesh file="textured_collision_25.obj"/>
+    <mesh file="textured_collision_26.obj"/>
+    <mesh file="textured_collision_27.obj"/>
+    <mesh file="textured_collision_28.obj"/>
+    <mesh file="textured_collision_29.obj"/>
+    <mesh file="textured_collision_30.obj"/>
+    <mesh file="textured_collision_31.obj"/>
+    <mesh file="textured_collision_32.obj"/>
+    <mesh file="textured_collision_33.obj"/>
+    <mesh file="textured_collision_34.obj"/>
+    <mesh file="textured_collision_35.obj"/>
+    <mesh file="textured_collision_36.obj"/>
+    <mesh file="textured_collision_37.obj"/>
+    <mesh file="textured_collision_38.obj"/>
+    <mesh file="textured_collision_39.obj"/>
+    <mesh file="textured_collision_40.obj"/>
+    <mesh file="textured_collision_41.obj"/>
+    <mesh file="textured_collision_42.obj"/>
+    <mesh file="textured_collision_43.obj"/>
+    <mesh file="textured_collision_44.obj"/>
+  </asset>
+  <worldbody>
+    <body name="textured">
+      <freejoint/>
+      <geom mesh="textured_collision_0" rgba="0.2997873979859563 0.316084056398392 0.6365424949486413 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_1" rgba="0.02313271413475826 0.588194670929464 0.2824943683383002 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_2" rgba="0.4582946077294161 0.6332667503031574 0.3515201717105747 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_3" rgba="0.9976715145613448 0.07845947908482875 0.7378757932212385 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_4" rgba="0.6711558902423737 0.069397041556023 0.8407182141128869 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_5" rgba="0.6282066568413099 0.625393565219639 0.7945949543175242 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_6" rgba="0.4857216503806716 0.8956775832822043 0.30038857634120386 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_7" rgba="0.5738632033090582 0.40663594408931436 0.4105403422403874 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_8" rgba="0.12183939481805706 0.03540252502276431 0.21810159590458167 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_9" rgba="0.21985498928532 0.4803870644597704 0.9679344308316811 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_10" rgba="0.4685278105381311 0.24912818970926476 0.2398073285818727 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_11" rgba="0.7946122858996115 0.24004992727512442 0.481264690496223 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_12" rgba="0.7501543294952498 0.7634879251688524 0.9955447280343381 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_13" rgba="0.5970355241586319 0.7556782623559196 0.7121212834095354 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_14" rgba="0.4880771061905602 0.6343246763380095 0.27763644763448236 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_15" rgba="0.04323922507289513 0.26779032780302947 0.2723195899822287 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_16" rgba="0.739076997587504 0.8872464008397034 0.12805932575818413 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_17" rgba="0.7738189007538326 0.8230392989186737 0.45822240855527807 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_18" rgba="0.6820969042997206 0.7995519295202461 0.0668816465713945 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_19" rgba="0.9775494820037206 0.9999826281033107 0.37607057237081365 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_20" rgba="0.8343632484084355 0.6048975517913537 0.26646043081540005 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_21" rgba="0.8957419109113021 0.4691912792851405 0.9362607186046099 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_22" rgba="0.3742799969166808 0.9818183403973468 0.8370312090855623 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_23" rgba="0.2576901990850602 0.6801313405610883 0.2567288262907631 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_24" rgba="0.617788834830948 0.17206620191921185 0.47462681680568575 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_25" rgba="0.672214537939616 0.4506572466432752 0.549046903554538 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_26" rgba="0.22571965287642182 0.7872851388259247 0.11166991778608637 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_27" rgba="0.07705840443651013 0.22366527146556492 0.803566051261953 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_28" rgba="0.5466388343047809 0.8338797561418823 0.6150246447341541 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_29" rgba="0.4839633512957494 0.6433620678087879 0.4828389573309202 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_30" rgba="0.4458860873369309 0.12550260708589023 0.19447411296846662 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_31" rgba="0.8575536636986494 0.7981184754286352 0.7357241503672568 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_32" rgba="0.5407593811831346 0.6191729446268135 0.7322198113361336 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_33" rgba="0.4374352586934317 0.6935697296905593 0.5488098285357191 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_34" rgba="0.13848046515123358 0.37268952366598107 0.23277381891883464 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_35" rgba="0.5277475676810774 0.691591895266141 0.003617147997424963 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_36" rgba="0.9388244632720292 0.5211361490992529 0.10848162907125736 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_37" rgba="0.5613139302373358 0.8285900765543499 0.8150833055666227 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_38" rgba="0.7473557626258756 0.04092465248310895 0.9977631006732501 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_39" rgba="0.20609903780034344 0.8576678406207157 0.2883524397531474 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_40" rgba="0.1494313749128463 0.5541623464824108 0.6903378317520495 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_41" rgba="0.8931871638717782 0.43583907654723975 0.6600334969235319 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_42" rgba="0.07355567448871048 0.044578630253069185 0.26604631817676516 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_43" rgba="0.5479095567861945 0.6867627911526509 0.23844145514846926 1" class="object_collision" density="50.0"/>
+      <geom mesh="textured_collision_44" rgba="0.6731369885720686 0.2301668638162253 0.36029178914316007 1" class="object_collision" density="50.0"/>
+    </body>
+  </worldbody>
+</mujoco>

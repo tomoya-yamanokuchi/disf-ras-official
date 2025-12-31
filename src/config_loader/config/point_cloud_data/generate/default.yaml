@@ -1,0 +1,4 @@
+# output_file: "./assets/franka_emika_panda_grasp/generated_scene_pretty.xml" # to be changed for your env!
+
+
+output_file_name: "generated_scene_pretty.xml" # to be changed for your env!

@@ -1,0 +1,172 @@
+mode         : 0 # plot
+# mode         : 1 # save
+# ------------------------
+# axis_label  : True # False
+# empty_ticks : False # True
+# use_title   : True # False
+# ---
+axis_label  : False
+empty_ticks : True
+use_title   :  False
+# ------------------------
+# figsize      : [13, 13] # [6, 6]
+figsize       : [8, 8]
+# figsize       : [4, 4]
+# save_path     : "./ipfo.pdf"
+
+# -----------------------------
+# elev         : 30 # 45
+# azim         : -135 # -45 # 45
+# # ---
+# elev         : 45
+# azim         : -45
+# elev         : 220 # 45
+# azim         : 60 # -45 # 45
+# --- experiment debug ---
+# elev         : 220 # 45
+# azim         : -30 # -45 # 45
+# --- simulation save for paper ---
+# elev         : 220 # 45
+# azim         : -225 # -45 # 45
+# -----------------------------
+# --- calibration view for describing real-setup ---
+elev         : 200 # 45
+azim         : -190 # -45 # 45
+# -------------------------------------
+
+# point_size   : 2 #"5 # 10
+# normal_length: 0.005 # 0.0025
+# point_alpha  : 1.0
+# normal_alpha : 1.0
+label_fontsize : 14
+# ----
+hand_origin_point_size    : 15
+hand_origin_normal_length : 0.01
+
+# ------
+use_fixed_limit: True
+# use_fixed_limit: False
+# # ------------ YCB object ----------------
+# x_min : -0.1
+# x_max :  0.1
+# # ---
+# y_min : -0.1
+# y_max :  0.1
+# # ---
+# z_min : -0.1
+# z_max :  0.1
+
+# ---------- RubberDuck -----------
+x_min :  -0.03 # 0.1
+x_max :  0.09
+# ---
+y_min :  -0.03 # 0.1
+y_max :  0.09
+# ---
+z_min : -0.1 # 0.1
+z_max :  0.014
+
+
+# ---------- box calibration -----------
+# x_min :  -0.02 # 0.1
+# x_max :  0.07 # 0.1
+# # ---
+# y_min :  -0.02 # 0.1
+# y_max :  0.07 # 0.1
+# # ---
+# z_min : -0.02 # 0.1
+# z_max :  0.07 # 0.1
+# ----------------------------
+# # ---------- new view -----------
+# x_min :  -0.02 # 0.1
+# x_max :  0.07 # 0.1
+# # ---
+# y_min :  -0.02 # 0.1
+# y_max :  0.07 # 0.1
+# # ---
+# z_min : -0.05 # 0.1
+# z_max :  0.05 # 0.1
+# -------
+point_normal:
+  # ----------------
+  #      point
+  # ----------------
+  point_size:
+    target:
+      surface: 3 # 5 # 7 # 10
+      contact: 3 # 5 # 7 # 10
+      correspondence : 4 # 10
+    source:
+      contact       : 3 # 5 # 7 # 10
+      correspondence: 3 # 5 # 7 # 10
+  # ----------------
+  point_alpha:
+    target:
+      surface: 0.3
+      contact: 1.0
+      correspondence: 1.0
+    source:
+      contact: 1.0
+      correspondence: 1.0
+  # ----------------
+  #      normal
+  # ----------------
+  normal_length:
+    target:
+      surface: 0
+      contact: 0
+      # correspondence: 0.012
+      correspondence: 0.005 # box
+    source:
+      contact: 0
+      # correspondence: 0.012
+      correspondence: 0.005 # box
+    n_z  : 0.012 # 0.05
+    n_app: 0.05
+  # ----------------
+  normal_alpha:
+    target:
+      surface: 1.0
+      contact: 1.0
+      correspondence: 1.0
+    source:
+      contact: 1.0
+      correspondence: 1.0
+    n_z  : 1.0
+    n_app: 1.0
+
+  # ----------------
+  #      color
+  # ----------------
+  color:
+    target:
+      surface: 1.0
+      contact: 1.0
+      correspondence: "blue"
+    source:
+      contact_skew: {
+          "1" : "tan",      # right
+          "2" : "lightblue", # left
+      }
+      contact: {
+        "1" : "plum",      # right
+        "2" : "limegreen", # left
+      }
+      correspondence: {
+        "1" : "red",   # right
+        "2" : "green", # left
+      }
+      correspondence_skew: {
+        "1" : "darkgoldenrod",   # right
+        "2" : "teal", # left
+      }
+
+    n_z  : "darkorange"
+    n_app: "purple"
+
+  # ----------------
+  #    linestyles
+  # ----------------
+  linestyles:
+    n_z: "-"
+    n_app: "-"

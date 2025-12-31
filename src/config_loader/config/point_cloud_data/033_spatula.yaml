@@ -1,0 +1,27 @@
+defaults:
+  - _self_
+  - load          : ycb
+  - pre_prosessing: default
+  - generate      : default
+# ------------------------------------------
+model_name: "033_spatula"
+# ------------------------------------------
+
+grasp:
+  panda:
+    n_approach: [1, 1, 0.]
+    gripper_pose:
+      translation: [0.002668, -0.017577, -0.014862] # 5/8
+      rotvec     : [-1.57079633, 0, 0.        ]
+
+  ur5e:
+    n_approach: [1, 1, 0.]
+    gripper_pose:
+      translation: [0.002668, -0.017577, -0.014862] # 5/8
+      rotvec     : [-1.57079633, 0, 0.        ]
+
+  kuka:
+    n_approach: [1, 1, 0.]
+    gripper_pose:
+      translation: [0.002668, -0.017577, -0.014862] # 5/8
+      rotvec     : [-1.57079633, 0, 0.        ]

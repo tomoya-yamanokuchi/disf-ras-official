@@ -1,0 +1,56 @@
+# use_gui : False
+use_gui : True
+# -----
+width : 7
+height: 7
+show_ui: True
+# -----
+opt:
+  label: 0
+      # 0: NONE        = 0,     // nothing
+      # 1: BODY,                // body labels
+      # 2: JOINT,               // joint labels
+      # 3: GEOM,                // geom labels
+      # 4: SITE,                // site labels
+      # 5: CAMERA,              // camera labels
+      # 6: LIGHT,               // light labels
+      # 7: TENDON,              // tendon labels
+      # ACTUATOR,               // actuator labels
+      # CONSTRAINT,             // constraint labels
+      # FLEX,                   // flex labels
+      # SKIN,                   // skin labels
+      # SELECTION,              // selected object
+      # SELPNT,                 // coordinates of selection point
+      # CONTACTPOINT,           // contact information
+      # CONTACTFORCE,           // magnitude of contact force
+      # ISLAND,                 // id of island
+  frame: 0
+      # 0: mjFRAME_NONE        = 0,        // no frames
+      # 1: mjFRAME_BODY,                    // body frames
+      # 2: mjFRAME_GEOM,                   // geom frames
+      # 3: mjFRAME_SITE,                   // site frames
+      # 4: mjFRAME_CAMERA,                 // camera frames
+      # 5: mjFRAME_LIGHT,                  // light frames
+      # 6: mjFRAME_CONTACT,                // contact frames
+      # 7: mjFRAME_WORLD,                  // world frame
+  group_enable:
+    geomgroup:
+      group_1: 0
+      group_2: 1 # visual
+      group_3: 0 # 1 # robot-collision
+      group_4: 1 # 1 # object-collision
+      group_5: 1 # 1 # fingertip-pad-collision
+    sitegroup:
+      group_4: 1
+  contact_point: True # False
+  contact_force: True # False
+  convex_full  : True
+  transparent  : False # True # False # True
+# -----
+scale:
+  contactwidth : 0.05
+  contactheight: 0.01
+  forcewidth   : 0.01
+
+defaults:
+  - save  : default

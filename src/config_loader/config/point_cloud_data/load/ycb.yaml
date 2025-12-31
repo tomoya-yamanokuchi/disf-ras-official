@@ -1,0 +1,11 @@
+# model_dir_path_relatevi_from_xml_dir            : "../models/ycb"            # to be changed for your env!
+dir_path_relative_to_cwd : "./models/ycb" # to be changed for your env!
+suffix_fname             : "clouds/merged_cloud.ply"
+
+object_frame_to_gripper_frame_transform:
+  rotvec_object_in_pcd_load     : [3.141592653589793, 0, 0] # v[0, 0, 1.57079633]
+  translation_object_in_pcd_load:
+
+object_mujoco_load:
+  pos : [0, 0, 0.] # x, y, z
+  quat: [1, 0, 0, 0] # w, x, y, z

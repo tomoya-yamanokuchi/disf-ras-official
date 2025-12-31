@@ -1,0 +1,27 @@
+integration_dt      : 1.0 # 1.0   # Integration timestep in seconds. This corresponds to the amount of time the joint velocities will be integrated for to obtain the desired joint positions.
+damping             : 1e-4  # Damping term for the pseudoinverse to prevent joint velocities from becoming too large when the Jacobian is close to singular.
+gravity_compensation: True  # Whether to enable gravity compensation.
+max_angvel          : 0.15 # 0.15 # 0.15  # Maximum allowable joint velocity in rad/s. Set to 0 to disable.
+# max_angvel          : 0.05 # 0.15 # 0.15  # Maximum allowable joint velocity in rad/s. Set to 0 to disable.
+
+
+reaching_threshold:
+  pre_grasp:
+    position   : 0.011 # 0.009 # 0.007
+    orientation: 0.14
+  optimal_grasp:
+    position   : 0.001 # 0.018  # 0.0075 # 0.006
+    orientation: 0.01 # 0.15
+  lift_up:
+    position   : 0.1
+    orientation: 0.1
+
+stay_step:
+  pre_grasp    : 200
+  optimal_reach: 100 # 300
+  finger_close : 200
+  lift_up      : 500
+
+# TIMEOUT: 5.0
+TIMEOUT: 2.0
+# TIMEOUT: 1.0

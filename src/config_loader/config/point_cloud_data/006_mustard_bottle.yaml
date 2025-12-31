@@ -1,0 +1,26 @@
+defaults:
+  - _self_
+  - load          : ycb
+  - pre_prosessing: default
+  - generate      : default
+# ------------------------------------------
+model_name: "006_mustard_bottle"
+# ------------------------------------------
+grasp:
+  panda:
+    n_approach: [1, 1, 0]
+    gripper_pose:
+      translation: [0.004149, 0.007659, -0.045195] # 0/2
+      rotvec     : [0.        , 0.        , 0.78539816]
+
+  ur5e:
+    n_approach: [0.5, 0.5, 1]
+    gripper_pose:
+      translation: [0.003541, 0.009453, -0.156055] # 2/5
+      rotvec     : [0.        , 0.        , 0.78539816]
+
+  kuka:
+    n_approach: [0, 0, 1]
+    gripper_pose:
+      translation: [0.003541, 0.009453, -0.156055] # 2/5
+      rotvec     : [0.        , 0.        , 0.78539816]

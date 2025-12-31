@@ -1,0 +1,58 @@
+defaults:
+  - option    : default_option
+  - renderer  : default_renderer
+
+  - viewer    : visual_viewer
+  # - viewer    : collision_viewer
+
+  - camera    : arm_grasp
+  - pre_grasp : default_pre_grasp
+  - table     : default
+# ----------------------
+env_name  : "kuka_grasp"
+
+end_effector_site_name : "canonical_fingertip_surafece"
+
+d_bias : 0.02
+
+reaching_threshold:
+  finger:
+    # pos: 0.005
+    # vel: 0.001
+    velocity    : 0.001
+    stable_time : 0.3
+
+arm_body_names : [
+    "link1",
+    "link2",
+    "link3",
+    "link4",
+    "link5",
+    "link6",
+    "link7",
+]
+
+arm_joint_names : [
+    "joint1",
+    "joint2",
+    "joint3",
+    "joint4",
+    "joint5",
+    "joint6",
+    "joint7",
+]
+
+arm_actuator_names : [
+    "actuator1",
+    "actuator2",
+    "actuator3",
+    "actuator4",
+    "actuator5",
+    "actuator6",
+    "actuator7",
+]
+
+hand_joint_names : [
+  "finger_joint2",
+]
+

@@ -1,0 +1,13 @@
+<mujoco model="textured">
+  <asset>
+    <mesh file="textured_collision_0.obj"/>
+    <mesh file="textured_collision_1.obj"/>
+  </asset>
+  <worldbody>
+    <body name="textured">
+      <freejoint/>
+      <geom mesh="textured_collision_0" rgba="0.629803206558568 0.20915442819543584 0.559114989573758 1" class="object_collision" density="200.0"/>
+      <geom mesh="textured_collision_1" rgba="0.8689771530414746 0.005574921851398851 0.04425688573535558 1" class="object_collision" density="200.0"/>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,17 @@
+defaults:
+  - _self_
+  - load          : observed
+  - pre_prosessing: observed
+  - generate      : default
+
+# ------------------------------------------
+model_name: "observed_RubberDuck"
+# ------------------------------------------
+
+grasp:
+
+  ur5e:
+    n_approach: [-0., 0.5, 1]
+    gripper_pose:
+      translation :  [-0.003051, -0.023849, -0.081192]
+      rotvec      : [0, 0,  1.57        ]

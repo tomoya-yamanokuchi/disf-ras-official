@@ -1,0 +1,27 @@
+defaults:
+  - _self_
+  - load          : default
+  - pre_prosessing: default
+  - generate      : default
+# ------------------------------------------
+model_name: "065-j_cups"
+# ------------------------------------------
+
+grasp:
+  panda:
+    n_approach: [0.5, 0, 1]
+    gripper_pose:
+      translation: [0.006748, -0.044545, -0.047389] # 2/8
+      rotvec     : [0, 0, 0]
+
+  ur5e:
+    n_approach: [0.5, 0, 1]
+    gripper_pose:
+      translation: [0.006748, -0.044545, -0.047389] # 2/8
+      rotvec     : [0, 0, 0]
+
+  kuka:
+    n_approach: [0.5, 0, 1]
+    gripper_pose:
+      translation: [0.006748, -0.044545, -0.047389] # 2/8
+      rotvec     : [0, 0, 0]

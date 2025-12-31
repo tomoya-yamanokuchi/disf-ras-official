@@ -1,0 +1,18 @@
+defaults:
+  - _self_
+  - load          : observed
+  - pre_prosessing: observed
+  - generate      : default
+
+# ------------------------------------------
+model_name: "observed_WineGlass"
+# ------------------------------------------
+
+grasp:
+
+  ur5e:
+    n_approach: [0, -1, 0.5]
+    gripper_pose:
+      translation :  [0.005852, 0.002439, -0.032443]
+      # rotvec      : [0, 0,  1.57        ]
+      rotvec      : [0., 0, -0.9       ]

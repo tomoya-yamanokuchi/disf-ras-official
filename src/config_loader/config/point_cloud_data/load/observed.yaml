@@ -1,0 +1,12 @@
+dir_path_relative_to_cwd: "./models/observed_mesh" # to be changed for your env!
+suffix_fname             : "pcd.ply"
+
+number_of_points: 3000
+object_frame_to_gripper_frame_transform:
+  rotvec_object_in_pcd_load     : [0, 0, 0]
+  translation_object_in_pcd_load: [0, 0, 0]
+
+object_mujoco_load:
+  pos : [0, 0, 0.003] # x, y, z
+  quat: [0, 1, 0, 0] # w, x, y, z
+

@@ -1,0 +1,28 @@
+defaults:
+  - _self_
+  - load          : custom
+  - pre_prosessing: default
+  - generate      : default
+
+# ------------------------------------------
+model_name: "custom_T"
+# ------------------------------------------
+
+grasp:
+  panda:
+    n_approach: [0.0, 0.0, 1.0]
+    gripper_pose:
+      translation : [0.015053, 0.045312, -0.049456] # 1/4
+      rotvec      : [0, 0, 0] # user-defined param
+
+  ur5e:
+    n_approach: [0.0, 0.0, 1.0]
+    gripper_pose:
+      translation : [0.015053, 0.045312, -0.049456] # 1/4
+      rotvec      : [0, 0, 0] # user-defined param
+
+  kuka:
+    n_approach: [0.0, 0.0, 1.0]
+    gripper_pose:
+      translation : [0.015053, 0.045312, -0.049456] # 1/4
+      rotvec      : [0, 0, 1.57] # user-defined param

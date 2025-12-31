@@ -1,0 +1,87 @@
+defaults:
+  - option    : default_option
+  - renderer  : default_renderer
+  - viewer    : collision_viewer
+  - camera    : arm_grasp
+  - pre_grasp : default_pre_grasp
+# ----------------------
+env_name  : "kuka_hand"
+hand_name : "kuka_hand"
+
+end_effector_name      : "palm"
+end_effector_body_name : "palm"
+end_effector_site_name : "attachment_site"
+mocap_site_name        : "target"
+
+hand_pose_offset_info:
+  canonical_hand_single_xpos  : [0., 0., 0.4]
+  canonical_hand_single_xquat : [1., 0., 0., 0.]
+
+d_bias : 0.02
+
+reaching_threshold:
+  finger:
+    # pos: 0.005
+    # vel: 0.001
+    velocity    : 0.001
+    stable_time : 0.3
+
+arm_body_names : [
+    "link1",
+    "link2",
+    "link3",
+    "link4",
+    "link5",
+    "link6",
+    "link7",
+]
+
+arm_joint_names : [
+    "joint1",
+    "joint2",
+    "joint3",
+    "joint4",
+    "joint5",
+    "joint6",
+    "joint7",
+]
+
+arm_actuator_names : [
+    "actuator1",
+    "actuator2",
+    "actuator3",
+    "actuator4",
+    "actuator5",
+    "actuator6",
+    "actuator7",
+]
+
+hand_joint_names : [
+  "finger_joint1",
+]
+
+
+
+
+mocap:
+  hand:
+    body_name: "hand"
+  fingertip_base:
+    name           : "fingertip_base_mocap"
+    geom_info_name : "fingertip_center"
+    normal_gripper : [0, 1, 0] # direction of gripper aperture
+  fingertip_transformed:
+    name : "fingertip_transformed_mocap"
+  object:
+    name      : "object"
+    resolution: 121
+  correspondence:
+    object:
+      name : "object_correspondence_mocap"
+    fingertip:
+      name : "fingertip_correspondence_mocap"
+    threshold : 1e5 #  0.1
+  scale_param : 0.005
+
+
+

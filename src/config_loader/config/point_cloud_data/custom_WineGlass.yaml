@@ -1,0 +1,31 @@
+defaults:
+  - _self_
+  - load          : custom
+  - pre_prosessing: default
+  - generate      : default
+
+# ------------------------------------------
+model_name: "custom_WineGlass"
+# ------------------------------------------
+
+grasp:
+  panda:
+    n_approach: [0.5, -1, 0]
+    gripper_pose:
+      translation : [0.059880, 0.060266, -0.050141] # 2/15
+      rotvec      : [0.        , 0.        , -0.7039816]
+
+  ur5e:
+    n_approach: [0.5, -1, 0]
+    gripper_pose:
+      translation : [0.059880, 0.060266, -0.050141] # 2/15
+      rotvec      : [0.        , 0.        , -0.7039816]
+
+  kuka:
+    n_approach: [0.5, -1, 0]
+    gripper_pose:
+      translation : [0.059880, 0.060266, -0.050141] # 2/15
+      # rotvec      : [-0.61394313,  1.48218982,  0.61394313]
+      # rotvec      : [-0.61394313,  1.48218982,  0.61394313]
+      # rotvec      : [0.        , 0.        , -0.7039816]
+      rotvec :  [ 0.61394313,  1.48218982, -0.61394313]

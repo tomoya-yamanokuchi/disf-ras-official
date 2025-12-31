@@ -2,9 +2,9 @@
 
 
 <p align="center">
-  <img src="readme_assets/output_panda.gif"  width="33%" />
-  <img src="readme_assets/output_ur5e.gif"   width="33%" />
-  <img src="readme_assets/output_iiwa.gif"   width="33%" />
+  <img src="readme_assets/output_panda.gif"  width="32%" />
+  <img src="readme_assets/output_ur5e.gif"   width="32%" />
+  <img src="readme_assets/output_iiwa.gif"   width="32%" />
 </p>
 
 ## Overview
@@ -116,9 +116,9 @@ ISF assume a specific gripper local frame. Thus, we need to fine our customized 
 
 #### gripper frame when it is attached to robot end effector
 <p>
-    <img src="readme_assets/robot_frame/panda.png" width="33%">
-    <img src="readme_assets/robot_frame/ur5e.png" width="33%">
-    <img src="readme_assets/robot_frame/iiwa.png" width="33%">
+    <img src="readme_assets/robot_frame/panda.png" width="32%">
+    <img src="readme_assets/robot_frame/ur5e.png" width="32%">
+    <img src="readme_assets/robot_frame/iiwa.png" width="32%">
 </p>
 
 

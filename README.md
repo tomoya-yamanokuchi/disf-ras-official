@@ -1,15 +1,28 @@
-# Disentangled Iterative Surface Fitting for Contact-stable Grasp Planning (DISF)
+# Official implementation of Disentangled Iterative Surface Fitting (DISF) with journal extended vesion
 
 
-<!-- ![Demo Video](videos/grasp_execution_video_drill_high_resolution.gif) -->
-<p>
-    <img src="pictures/panda_grasp.png" width="40%">
-    <img src="pictures/UR5e_grasp.png" width="38.7%">
+<p align="center">
+  <img src="readme_assets/output_panda.gif"  width="33%" />
+  <img src="readme_assets/output_ur5e.gif"   width="33%" />
+  <img src="readme_assets/output_iiwa.gif"   width="33%" />
 </p>
 
 ## Overview
 
-This is the official implementation for the paper entitled with "Disentangled Iterative Surface Fitting for Contact-stable Grasp Planning".
+This is the official implementation for the paper entitled with
+"DISF: Disentangled Iterative Surface Fitting for Contact-stable Grasp Planning with Grasp Pose Alignment to the Object Center of Mass"
+
+- Project page: https://tomoya-yamanokuchi.github.io/disf-ras-project-page/
+
+
+## Relationship with our previous version
+This repository is the extended version of our previous [conference_version].
+
+Most of implementation, therefore, is forked from there.
+
+- Previous Project page: https://tomoya-yamanokuchi.github.io/disf-project-page/
+
+
 
 ## 1-1. Preparation for docker run
 
@@ -96,25 +109,18 @@ ISF assume a specific gripper local frame. Thus, we need to fine our customized 
 
 #### gripper local frame
 <p>
-    <img src="pictures/gripper/panda_gripper.png" width="30.4%">
-    <img src="pictures/gripper/ur5e_gripper.png" width="31.1%">
-    <img src="pictures/gripper/kuka_gripper.png" width="30%">
+    <img src="readme_assets/gripper_frame/panda_gripper.png" width="30.4%">
+    <img src="readme_assets/gripper_frame/ur5e_gripper.png" width="31.1%">
+    <img src="readme_assets/gripper_frame/kuka_gripper.png" width="30%">
 </p>
 
-#### robot manipulator frame (view1)
+#### gripper frame when it is attached to robot end effector
 <p>
-    <img src="pictures/view1/panda_view1.png" width="28.8%">
-    <img src= "pictures/view1/ur5e_view1.png" width="31.1%">
-    <img src= "pictures/view1/kuka_view1.png" width="25.1%">
+    <img src="readme_assets/robot_frame/panda.png" width="33%">
+    <img src="readme_assets/robot_frame/ur5e.png" width="33%">
+    <img src="readme_assets/robot_frame/iiwa.png" width="33%">
 </p>
 
-
-#### robot manipulator frame (view2)
-<p>
-    <img src="pictures/view2/panda_view2.png" width="26.9%">
-    <img src= "pictures/view2/ur5e_view2.png" width="31.1%">
-    <img src= "pictures/view2/kuka_view2.png" width="26.9%">
-</p>
 
 ### 2) Define canonical gripper surface on the gripper base of XML
 The second step you have to do is to set the new body, `canonical_fingertip_surafece`, at the appropriate place where the pose is consistnt with the canonical fingertip surafece of ISF planning space except fot the transration along with the gripper aperture dirextion:
@@ -170,12 +176,6 @@ example of slide joint attachment to the finger of gripper in XML:
         ....
 ```
 
-
-IK solver
--
-We currently use "DampedLeastSquares" method inside our implementation, but you can replace the solver whatever you want.
-
-
 # Custom Object Grasping
 
 ## (1) prepare your custom stl file
@@ -201,7 +201,7 @@ We assume the object pose is alighed with the grasp planning space for canonical
 2. edit rotation and translation of object consistent with the grasp planning space (canonical gripper surface frame).
 
 <p>
-    <img src="pictures/customHammer.png" width="60%">
+    <img src="readme_assets/customHammer.png" width="60%">
 </p>
 
 
@@ -255,7 +255,7 @@ object_kmeans_centers (for config):
 
 #### visualization of each center and colored whole object point cloud associated with clustere
 <p>
-    <img src="pictures/object_kmeasn_clustering.png" width="60%">
+    <img src="readme_assets/object_kmeasn_clustering.png" width="60%">
 </p>
 
 
@@ -274,8 +274,8 @@ e.g. ) in the case of `custom_Hammer.yaml`
 ### (5) try grasp planning and evalute the planned grasp with simulator!
 
 <p>
-    <img src="pictures/point_cloud_grasp_planning.png" width="45%">
-    <img src="pictures/hammer_sim.png" width="45%">
+    <img src="readme_assets/point_cloud_grasp_planning.png" width="45%">
+    <img src="readme_assets/hammer_sim.png" width="45%">
 </p>
 
 
@@ -284,3 +284,5 @@ e.g. ) in the case of `custom_Hammer.yaml`
 [MuJoCo]: https://github.com/deepmind/mujoco
 [MuJoCo Menagerie]: https://github.com/deepmind/mujoco_menagerie
 [MeshLab]: https://www.meshlab.net/
+
+[conference_version]: https://github.com/tomoya-yamanokuchi/disf-official

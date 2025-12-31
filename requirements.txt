@@ -1,5 +1,4 @@
 tqdm
-readline
 ipdb
 attrdict
 natsort

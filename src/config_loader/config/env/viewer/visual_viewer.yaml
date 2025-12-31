@@ -1,5 +1,5 @@
-# use_gui : False
-use_gui : True
+use_gui : False
+# use_gui : True
 # -----
 width : 7
 height: 7
@@ -24,7 +24,7 @@ opt:
       # CONTACTPOINT,           // contact information
       # CONTACTFORCE,           // magnitude of contact force
       # ISLAND,                 // id of island
-  frame: 0
+  frame: 3
       # 0: mjFRAME_NONE        = 0,        // no frames
       # 1: mjFRAME_BODY,                    // body frames
       # 2: mjFRAME_GEOM,                   // geom frames

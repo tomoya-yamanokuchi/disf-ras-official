@@ -31,6 +31,7 @@ class MujocoGraspingArmGraspViaPregrasp:
         self.object_whole_surface           = domain_object.object_whole_surface
         # ----
         self.show_ui                        = domain_object.show_ui
+        self.config_camera                  = domain_object.config_env.camera
         self.config_viewer                  = domain_object.config_env.viewer
         self.config_env                     = domain_object.config_env
         self.stay_step                      = domain_object.config_ik_solver.stay_step
@@ -134,25 +135,16 @@ class MujocoGraspingArmGraspViaPregrasp:
         # =================== do grasping ===================
         # 2) with ブロックで使う
         with self.viewer_wrapper as viewer:
-
-
-
-
             viewer.camera.set_overview()
-
-            # ------ data capture setup for paper ------
-            # plese delete after debug
-            gv = viewer._gui_viewer
-            with gv.lock():
-                gv.cam.lookat[:]  = np.array([-0.25, 0, 0.35] )
-                gv.cam.distance   = 0.5
-                gv.cam.azimuth    = 230.0
-                gv.cam.elevation  = -20.0
-            # -----------------------------------------
-
-
             self.frame_capture.home(frame=viewer.sync())
-            import ipdb; ipdb.set_trace()
+            # ------ data capture setup for paper ------
+            if self.config_viewer.use_gui:
+                gv = viewer._gui_viewer
+                with gv.lock():
+                    gv.cam.lookat[:]  = self.config_camera.overview.lookat
+                    gv.cam.distance   = self.config_camera.overview.distance
+                    gv.cam.azimuth    = self.config_camera.overview.azimuth
+                    gv.cam.elevation  = self.config_camera.overview.elevation
             # ----- (1) pregrasp -----
             self.do_pre_grasp.execute(viewer, t_WG_pre, quat_WG_pre)
             self.do_stay_here.execute(viewer, stay_step=self.stay_step.pre_grasp)

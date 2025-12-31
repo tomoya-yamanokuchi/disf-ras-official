@@ -9,17 +9,17 @@ def read_requirements():
 
 # Find all packages in src/ and ur3e_grasp/src/
 packages = find_packages(where="src")
-ur3e_packages = find_packages(where="ur3e_grasp/src", include=["ur3e_grasp*"])
-packages.extend(ur3e_packages)
+# ur3e_packages = find_packages(where="ur3e_grasp/src", include=["ur3e_grasp*"])
+# packages.extend(ur3e_packages)
 
 setup(
     name="disf_ras",
     version="0.0.0",
-    packages=packages,
-    package_dir={
-        "": "src",
-        "ur3e_grasp": "ur3e_grasp/src/ur3e_grasp",
-    },
+    # packages=packages,
+    # package_dir={
+    #     "": "src",
+    #     "ur3e_grasp": "ur3e_grasp/src/ur3e_grasp",
+    # },
     include_package_data=True,
     install_requires=read_requirements(),
 )

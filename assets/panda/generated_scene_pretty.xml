@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mujoco model="panda scene">
   <include file="/home/cudagl/disf_ras/assets/panda/panda.xml" />
-  <include file="/home/cudagl/disf_ras/models/ycb/011_banana/tsdf/textured/textured.xml" />
+  <include file="/home/cudagl/disf_ras/models/box_mesh/box_composite5_uniform/textured/textured.xml" />
   <statistic center="0.3 0 0.4" extent="1" />
   <visual>
     <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0" />

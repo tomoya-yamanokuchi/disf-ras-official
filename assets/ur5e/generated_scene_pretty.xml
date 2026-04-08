@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mujoco model="ur5e scene">
   <include file="/home/cudagl/disf_ras/assets/ur5e/ur5e.xml" />
-  <include file="/home/cudagl/disf_ras/models/ycb/011_banana/tsdf/textured/textured.xml" />
+  <include file="/home/cudagl/disf_ras/models/custom_mesh/custom_Hammer/textured/textured.xml" />
   <statistic center="0.3 0 0.4" extent="1" />
   <visual>
     <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0" />

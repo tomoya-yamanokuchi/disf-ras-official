@@ -17,7 +17,7 @@ docker run -it --rm --gpus all --privileged --net=host --ipc=host \
   -v $HOME/.Xauthority:/home/$(id -un)/.Xauthority \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v /home/$USER/disf-ras-official:/home/cudagl/disf_ras \
-  -v /home/$USER/data:/home/cudagl/data \
+  -v /home/$USER/dataset:/home/cudagl/dataset \
   -v /home/$USER/ur3e_grasp:/home/cudagl/disf_ras/ur3e_grasp \
   -v /home/$USER/webcam_control:/home/cudagl/disf_ras/webcam_control \
   -w /home/cudagl/disf_ras \

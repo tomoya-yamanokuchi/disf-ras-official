@@ -82,10 +82,17 @@ We use [MuJoCo] as simulartor and use Franka Emika Panda environment from [MuJoC
 You can try the grasp planning by `DISF`, `VISF` or `CMA-ES`:
 
 ```bash
-python ~/disf/test/disf_grasp.py
-python ~/disf/test/visf_grasp.py
-python ~/disf/test/cma_grasp.py
+python scripts/sim/grasp_evaluation/grasp_one_object.py --robot_name ur5e --object_name custom_Hammer --method disf
 ```
+
+```bash
+python scripts/sim/grasp_evaluation/grasp_multiple_objects.py --robot_name ur5e --method disf
+```
+
+```bash
+python scripts/sim/grasp_evaluation/grasp_sweep.py
+```
+
 
 ## Parameter Settings
 

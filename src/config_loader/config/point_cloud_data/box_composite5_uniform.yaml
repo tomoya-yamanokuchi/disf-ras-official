@@ -10,25 +10,8 @@ model_name: "box_composite5_uniform"
 
 grasp:
   panda:
-    n_approach: [0.01, 0.02, 1]
-    gripper_pose:
-      translation:  [0.105087, 0.105040, -0.012512] # 12/15
-      rotvec      : [0.        , 0.        ,0.7853981633974483]
-
-  ur5e:
-    n_approach: [0.2, 0.2, 1]
-    gripper_pose:
-      translation : [0.102465, 0.102614, -0.012474] # 8/10
-      rotvec      : [0.        , 0.     , 0.7853981633974483]
-
-  # kuka:
-  #   n_approach: [0.2, 0.2, 1]
-  #   gripper_pose:
-  #     translation : [0.102465, 0.102614, -0.012474] # 8/10
-  #     rotvec      : [0.        , 0.     , 0.7853981633974483]
-
-  kuka:
     n_approach: [0, 0, 1]
     gripper_pose:
-      translation : [0.102465, 0.102614, -0.012474] # 8/10
-      rotvec      : [0.        , 0.     , 0.7853981633974483]
+      translation:  [-0.000452, 0.000080, -0.019812] # 0/3
+      rotvec      : [0.        , 0.        ,0]
+

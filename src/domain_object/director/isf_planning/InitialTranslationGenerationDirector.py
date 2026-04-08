@@ -38,6 +38,8 @@ class InitialTranslationGenerationDirector:
             import numpy as np
             builder = RectPlaneSurfaceDataDirector.construct(builder, robot_name, object_name)
             # import ipdb; ipdb.set_trace()
+        elif "box_composite" in object_name:
+            builder = CustomObjectSurfaceDataDirector.construct(builder, robot_name, object_name, xml_scene_file_generation=False)
         elif "custom" in object_name:
             builder = CustomObjectSurfaceDataDirector.construct(builder, robot_name, object_name, xml_scene_file_generation=False)
         elif "observed" in object_name:

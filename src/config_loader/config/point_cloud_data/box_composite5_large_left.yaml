@@ -5,7 +5,7 @@ defaults:
   - generate      : default
 
 # ------------------------------------------
-model_name: "box_composite5_uniform"
+model_name: "box_composite5_large_left"
 # ------------------------------------------
 
 grasp:

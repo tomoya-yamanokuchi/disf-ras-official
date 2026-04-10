@@ -2,3 +2,5 @@ from .MujocoGraspingArmGraspViaPregrasp import MujocoGraspingArmGraspViaPregrasp
 from .ISFMujocoGraspingYCBObjectEvaluation import ISFMujocoGraspingYCBObjectEvaluation
 from .GraspEvaluation import GraspEvaluation
 from .MujocoHandAloneEnv import MujocoHandAloneEnv
+from .ISFMujocoGraspingWithPosePerturbation import ISFMujocoGraspingWithPosePerturbation
+# from .ISFMujocoGraspingMassSweepEvaluation import ISFMujocoGraspingMassSweepEvaluation

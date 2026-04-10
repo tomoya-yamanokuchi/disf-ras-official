@@ -1,5 +1,5 @@
-# use_gui : False
-use_gui : True
+use_gui : False
+# use_gui : True
 # -----
 width : 7
 height: 7

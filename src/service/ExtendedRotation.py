@@ -20,10 +20,10 @@ class ExtendedRotation(Rotation):
         return quat_scalar_first
 
     @classmethod
-    def from_euler(cls, euler: npt.ArrayLike) -> ExtendedRotation:
+    def from_euler(cls, euler: npt.ArrayLike, degrees: bool = False) -> ExtendedRotation:
         # ---
 
-        instance = super().from_euler(seq='xyz', angles=euler)
+        instance = super().from_euler(seq='xyz', angles=euler, degrees=degrees)
         # ---
         return cls(instance.as_quat())
 

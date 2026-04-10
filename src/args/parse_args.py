@@ -37,5 +37,29 @@ def parse_args():
         help="Save results to disk."
     )
 
+    # ========================= box_composite_mass_sweep =========================
+    p.add_argument("--total_mass_list", type = str, default = "0.50")
+    p.add_argument("--condition_list" , type = str, default = None)
 
+    p.add_argument("--condition"       , type = str, default = "uniform")
+    p.add_argument("--total_mass"      , type = float, default = 0.5)
+    # --- weight bias ---
+    p.add_argument("--bias_mild"       , type = float, default = 0.5)
+    p.add_argument("--bias_medium"     , type = float, default = 1.0)
+    p.add_argument("--bias_large"      , type = float, default = 1.5)
+    # --- grasp position ---
+    p.add_argument("--grasp_x"         , type = float, default = -0.08)
+    # --- box size ---
+    p.add_argument("--size_x"          , type = float, default = 0.20)
+    p.add_argument("--size_y"          , type = float, default = 0.04)
+    p.add_argument("--size_z"          , type = float, default = 0.04)
+    # --- trial setting ---
+    p.add_argument("--n_trials"        , type = int  , default = 10)
+    p.add_argument("--seed"            , type = int  , default = 0)
+    p.add_argument("--max_angle_deg"   , type = float, default = 5.0)
+
+    p.add_argument("--object_root_dir" , type = str  , default = "./models/box_mesh")
+    p.add_argument("--results_save_dir", type = str  , default = "/home/cudagl/dataset/RAS_results/box5")
     return p.parse_args()
+
+

@@ -36,7 +36,8 @@ GRASP_X = -0.08
 # --------------------------
 # User-controlled parameters
 # --------------------------
-TOTAL_MASS = 0.7 # 0.75 # 1.0 # 0.50
+TOTAL_MASS = 0.5 # 0.75 # 1.0 # 0.50
+# TOTAL_MASS = 0.7 # 0.75 # 1.0 # 0.50
 # TOTAL_MASS = 1.0 # 0.75 # 1.0 # 0.50
 
 BIAS_LEVELS = SignedBiasLevels(

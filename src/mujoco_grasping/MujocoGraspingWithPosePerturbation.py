@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 import numpy as np
 from domain_object.builder import DomainObject
@@ -15,8 +17,13 @@ from copy import deepcopy
 from print_color import print
 from .FrameCapture import FrameCapture
 
+from pose_perturbation.rotation_noise import (
+    RotationPerturbationConfig,
+    apply_rotation_noise_to_quaternion_wxyz,
+)
 
-class MujocoGraspingArmGraspViaPregrasp:
+
+class MujocoGraspingWithPosePerturbation:
     def __init__(self, domain_object: DomainObject):
         self.geom                           = domain_object.geom
         self.body                           = domain_object.body
@@ -52,7 +59,7 @@ class MujocoGraspingArmGraspViaPregrasp:
         self.do_lift_up                     = Do_LiftUp(domain_object)
         self.do_stay_here                   = Do_StayHere(domain_object)
         # ----
-        self.frame_capture                  = FrameCapture(domain_object)
+        # self.frame_capture                  = FrameCapture(domain_object)
         # ----
         self.object_mujoco_load_pos        = domain_object.object_mujoco_load_pos
         self.object_mujoco_load_quat       = domain_object.object_mujoco_load_quat
@@ -83,7 +90,11 @@ class MujocoGraspingArmGraspViaPregrasp:
         trans_add_table_hight = (self.z_direction_world * self.table_hight)
         return (qpos_palm + trans_add_table_hight)
 
-    def execute(self, isf_result: ISFResult):
+    def execute(self,
+            isf_result                  : ISFResult,
+            rotation_perturbation_config: RotationPerturbationConfig,
+            rng                         : np.random.Generator,
+        ):
         # ===================== environment setting =====================
         self.env.set_home_keyframe(key_name="home", object_pos=self.object_pos, object_quat=self.object_mujoco_load_quat)
         self.env.reset(keyframe=0)
@@ -112,6 +123,32 @@ class MujocoGraspingArmGraspViaPregrasp:
         t_WG_opt    = self.env.t_WC + (self.env.R_WC @ t_G)
         quat_WG_opt = ExtendedRotation.from_matrix(R_WG_opt).as_quat_scalar_first()
 
+
+        '''
+        -----------------------------------------------------------------------------
+                                rotation perturbation
+        -----------------------------------------------------------------------------
+        '''
+        # --------- apply pose perturbation here ---------
+        quat_WG_opt_perturbed, euler_noise_deg = apply_rotation_noise_to_quaternion_wxyz(
+            base_quat_wxyz = np.asarray(quat_WG_opt, dtype=float),
+            config         = rotation_perturbation_config,
+            rng            = rng,
+            left_multiply  = True,
+        )
+
+        # pregrasp and lift are computed from the perturbed grasp pose
+        R_WG_opt_perturbed = ExtendedRotation.from_quat(
+            quat_WG_opt_perturbed
+        ).as_rodrigues()
+
+        # ----- replace parameter
+        quat_WG_opt = quat_WG_opt_perturbed
+        R_WG_opt    = R_WG_opt_perturbed
+        '''
+        -----------------------------------------------------------------------------
+        '''
+
         # ------------------- pre-grasp -------------------
         _, t_WG_pre = compute_pregrasp_from_grasp(R_WG_opt, t_WG_opt, self.sphere_radius)
         quat_WG_pre = quat_WG_opt.copy()
@@ -136,7 +173,7 @@ class MujocoGraspingArmGraspViaPregrasp:
         # 2) with ブロックで使う
         with self.viewer_wrapper as viewer:
             viewer.camera.set_overview()
-            self.frame_capture.home(frame=viewer.sync())
+            # self.frame_capture.home(frame=viewer.sync())
             # ------ data capture setup for paper ------
             if self.config_viewer.use_gui:
                 gv = viewer._gui_viewer
@@ -149,7 +186,7 @@ class MujocoGraspingArmGraspViaPregrasp:
             # ----- (1) pregrasp -----
             self.do_pre_grasp.execute(viewer, t_WG_pre, quat_WG_pre)
             self.do_stay_here.execute(viewer, stay_step=self.stay_step.pre_grasp)
-            self.frame_capture.pregrasp(frame=viewer.sync())
+            # self.frame_capture.pregrasp(frame=viewer.sync())
             # import ipdb; ipdb.set_trace()
             # ----- (2) grasp -----
             self.do_optimal_grasp.execute(viewer, t_WG_opt, quat_WG_opt)
@@ -157,36 +194,42 @@ class MujocoGraspingArmGraspViaPregrasp:
             # ----- (3) gripper close  -----
             self.do_finger_reach.execute(viewer, qpos_finger)
             self.do_stay_here.execute(viewer, stay_step=self.stay_step.finger_close)
-            self.frame_capture.grasp(frame=viewer.sync())
+            # self.frame_capture.grasp(frame=viewer.sync())
             # ----- (4) postgrasp  -----
             self.do_lift_up.execute(viewer, t_WG_liftup,  quat_WG_liftup)
             self.do_stay_here.execute(viewer, stay_step=self.stay_step.lift_up)
-            self.frame_capture.postgrasp(frame=viewer.sync())
+            # self.frame_capture.postgrasp(frame=viewer.sync())
 
             # ===================================================================================
-            self.grasp_evaluator.evaluate(save=True)
+            grasp_result = self.grasp_evaluator.evaluate(save=True)
             # ===================================================================================
 
-            if not self.config_env.viewer.use_gui:
-                # -------
-                save_video(
-                    frames    = viewer.frames,
-                    fps       = self.config_viewer.save.fps,
-                    skip      = self.config_viewer.save.skip,
-                    save_path = os.path.join(self.results_save_dir,  self.config_viewer.save.filename + f"_{self.model_name}" +".mp4"),
-                )
-                # -------
-                save_captured_frame(
-                    frame = viewer.sync(),
-                    save_path = os.path.join(self.results_save_dir, "lift_up_overview" + f"_{self.model_name}" +".png"),
-                )
+            # if not self.config_env.viewer.use_gui:
+            #     # -------
+            #     save_video(
+            #         frames    = viewer.frames,
+            #         fps       = self.config_viewer.save.fps,
+            #         skip      = self.config_viewer.save.skip,
+            #         save_path = os.path.join(self.results_save_dir,  self.config_viewer.save.filename + f"_{self.model_name}" +".mp4"),
+            #     )
+            #     # -------
+            #     save_captured_frame(
+            #         frame = viewer.sync(),
+            #         save_path = os.path.join(self.results_save_dir, "lift_up_overview" + f"_{self.model_name}" +".png"),
+            #     )
 
-                fingertip_center = self.env.fingertip_center_xpos()
-                viewer.camera.set_zoom_with_fingertip_center(fingertip_center=fingertip_center)
-                # viewer.camera.set_zoom_with_fingertip_center(fingertip_center= self.env.fingertip_center_xpos())
-                save_captured_frame(
-                    frame = viewer.sync(),
-                    save_path = os.path.join(self.results_save_dir, "lift_up_zoom" + f"_{self.model_name}" +".png"),
-                )
+            #     fingertip_center = self.env.fingertip_center_xpos()
+            #     viewer.camera.set_zoom_with_fingertip_center(fingertip_center=fingertip_center)
+            #     # viewer.camera.set_zoom_with_fingertip_center(fingertip_center= self.env.fingertip_center_xpos())
+            #     save_captured_frame(
+            #         frame = viewer.sync(),
+            #         save_path = os.path.join(self.results_save_dir, "lift_up_zoom" + f"_{self.model_name}" +".png"),
+            #     )
         # -------
-
+        # import ipdb; ipdb.set_trace()
+        return {
+            "euler_noise_deg"      : euler_noise_deg,
+            "quat_WG_opt_nominal"  : quat_WG_opt,
+            "quat_WG_opt_perturbed": quat_WG_opt_perturbed,
+            "success"              : grasp_result,
+        }

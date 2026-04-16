@@ -2,11 +2,11 @@
   <worldbody>
     <body name="textured">
       <freejoint/>
-      <geom name="slice_0" type="box" pos="-0.080000 0 0" size="0.020000 0.020000 0.020000" mass="0.514387" rgba="1.000000 0.000000 0.000000 1.000000" class="object_collision"/>
-      <geom name="slice_1" type="box" pos="-0.040000 0 0" size="0.020000 0.020000 0.020000" mass="0.311991" rgba="1.000000 0.500000 0.000000 1.000000" class="object_collision"/>
-      <geom name="slice_2" type="box" pos="0.000000 0 0" size="0.020000 0.020000 0.020000" mass="0.189232" rgba="1.000000 1.000000 0.000000 1.000000" class="object_collision"/>
-      <geom name="slice_3" type="box" pos="0.040000 0 0" size="0.020000 0.020000 0.020000" mass="0.114775" rgba="0.000000 0.800000 0.000000 1.000000" class="object_collision"/>
-      <geom name="slice_4" type="box" pos="0.080000 0 0" size="0.020000 0.020000 0.020000" mass="0.069615" rgba="0.000000 0.200000 1.000000 1.000000" class="object_collision"/>
+      <geom name="slice_0" type="box" pos="-0.080000 0 0" size="0.020000 0.020000 0.020000" mass="0.257193" rgba="1.000000 0.000000 0.000000 1.000000" class="object_collision"/>
+      <geom name="slice_1" type="box" pos="-0.040000 0 0" size="0.020000 0.020000 0.020000" mass="0.155996" rgba="1.000000 0.500000 0.000000 1.000000" class="object_collision"/>
+      <geom name="slice_2" type="box" pos="0.000000 0 0" size="0.020000 0.020000 0.020000" mass="0.094616" rgba="1.000000 1.000000 0.000000 1.000000" class="object_collision"/>
+      <geom name="slice_3" type="box" pos="0.040000 0 0" size="0.020000 0.020000 0.020000" mass="0.057388" rgba="0.000000 0.800000 0.000000 1.000000" class="object_collision"/>
+      <geom name="slice_4" type="box" pos="0.080000 0 0" size="0.020000 0.020000 0.020000" mass="0.034807" rgba="0.000000 0.200000 1.000000 1.000000" class="object_collision"/>
     </body>
   </worldbody>
 </mujoco>

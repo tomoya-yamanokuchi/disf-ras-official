@@ -16,14 +16,16 @@ from run_one_mass_pattern import (
 
 DEFAULT_CONDITIONS = (
     "large_left",
-    "medium_left",
-    "mild_left",
-    "uniform",
-    "mild_right",
-    "medium_right",
+    # "medium_left",
+    # "mild_left",
+    # "uniform",
+    # "mild_right",
+    # "medium_right",
     "large_right",
 )
 
+#  "large_left",
+# "large_right",
 
 def parse_total_mass_list(
     total_mass_list_str: str,
@@ -128,6 +130,6 @@ if __name__ == "__main__":
     )
 
 '''
-    python scripts/sim/grasp_evaluation/run_mass_pattern_sweep.py --total_mass_list "0.50"
+    python scripts/sim/grasp_evaluation/run_mass_pattern_sweep.py --robot_name panda --method disf --total_mass_list "0.60"
 '''
 

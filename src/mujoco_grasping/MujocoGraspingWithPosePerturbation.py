@@ -59,7 +59,7 @@ class MujocoGraspingWithPosePerturbation:
         self.do_lift_up                     = Do_LiftUp(domain_object)
         self.do_stay_here                   = Do_StayHere(domain_object)
         # ----
-        # self.frame_capture                  = FrameCapture(domain_object)
+        self.frame_capture                  = FrameCapture(domain_object)
         # ----
         self.object_mujoco_load_pos        = domain_object.object_mujoco_load_pos
         self.object_mujoco_load_quat       = domain_object.object_mujoco_load_quat
@@ -173,7 +173,7 @@ class MujocoGraspingWithPosePerturbation:
         # 2) with ブロックで使う
         with self.viewer_wrapper as viewer:
             viewer.camera.set_overview()
-            # self.frame_capture.home(frame=viewer.sync())
+            self.frame_capture.home(frame=viewer.sync())
             # ------ data capture setup for paper ------
             if self.config_viewer.use_gui:
                 gv = viewer._gui_viewer
@@ -186,7 +186,7 @@ class MujocoGraspingWithPosePerturbation:
             # ----- (1) pregrasp -----
             self.do_pre_grasp.execute(viewer, t_WG_pre, quat_WG_pre)
             self.do_stay_here.execute(viewer, stay_step=self.stay_step.pre_grasp)
-            # self.frame_capture.pregrasp(frame=viewer.sync())
+            self.frame_capture.pregrasp(frame=viewer.sync())
             # import ipdb; ipdb.set_trace()
             # ----- (2) grasp -----
             self.do_optimal_grasp.execute(viewer, t_WG_opt, quat_WG_opt)
@@ -194,17 +194,17 @@ class MujocoGraspingWithPosePerturbation:
             # ----- (3) gripper close  -----
             self.do_finger_reach.execute(viewer, qpos_finger)
             self.do_stay_here.execute(viewer, stay_step=self.stay_step.finger_close)
-            # self.frame_capture.grasp(frame=viewer.sync())
+            self.frame_capture.grasp(frame=viewer.sync())
             # ----- (4) postgrasp  -----
             self.do_lift_up.execute(viewer, t_WG_liftup,  quat_WG_liftup)
             self.do_stay_here.execute(viewer, stay_step=self.stay_step.lift_up)
-            # self.frame_capture.postgrasp(frame=viewer.sync())
+            self.frame_capture.postgrasp(frame=viewer.sync())
 
             # ===================================================================================
             grasp_result = self.grasp_evaluator.evaluate(save=True)
             # ===================================================================================
 
-            # if not self.config_env.viewer.use_gui:
+            if not self.config_env.viewer.use_gui:
             #     # -------
             #     save_video(
             #         frames    = viewer.frames,
@@ -218,13 +218,13 @@ class MujocoGraspingWithPosePerturbation:
             #         save_path = os.path.join(self.results_save_dir, "lift_up_overview" + f"_{self.model_name}" +".png"),
             #     )
 
-            #     fingertip_center = self.env.fingertip_center_xpos()
-            #     viewer.camera.set_zoom_with_fingertip_center(fingertip_center=fingertip_center)
-            #     # viewer.camera.set_zoom_with_fingertip_center(fingertip_center= self.env.fingertip_center_xpos())
-            #     save_captured_frame(
-            #         frame = viewer.sync(),
-            #         save_path = os.path.join(self.results_save_dir, "lift_up_zoom" + f"_{self.model_name}" +".png"),
-            #     )
+                fingertip_center = self.env.fingertip_center_xpos()
+                viewer.camera.set_zoom_with_fingertip_center(fingertip_center=fingertip_center)
+                # viewer.camera.set_zoom_with_fingertip_center(fingertip_center= self.env.fingertip_center_xpos())
+                save_captured_frame(
+                    frame = viewer.sync(),
+                    save_path = os.path.join(self.results_save_dir, "lift_up_zoom" + f"_{self.model_name}" +".png"),
+                )
         # -------
         # import ipdb; ipdb.set_trace()
         return {

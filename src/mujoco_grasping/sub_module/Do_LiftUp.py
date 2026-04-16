@@ -5,6 +5,7 @@ from domain_object.builder import DomainObject
 from robot_env.instance.arm.ManipulatorGraspEnv import ManipulatorGraspEnv
 from robot_env.utils import MyViewerWrapper
 from .TimeWatch import TimeWatch
+from robot_env.utils import save_captured_frame
 
 
 class Do_LiftUp:
@@ -12,6 +13,7 @@ class Do_LiftUp:
         self.env : ManipulatorGraspEnv = domain_object.env
         self.time_watch                = TimeWatch(domain_object)
         self.grasp_evaluator           = domain_object.grasp_evaluator
+        self.results_save_dir          = domain_object.results_save_dir
 
     def execute(self,
             viewer          : MyViewerWrapper,
@@ -31,13 +33,35 @@ class Do_LiftUp:
         self.env.ik_solver.reset_ik_reach_flag()
         # ---
         self.time_watch.start()
+
+        step_count = 0
+        captured   = False
         # ---------
         while not self.env.ik_solver.reached:
             self.env.start_step()
             self.env.solve_ik()
             self.env.step()
             self.env.wait_step()
+
             viewer.sync()
+            # frame = viewer.sync()
+
+            step_count += 1
+
+            # 例: 20 step目で1回だけ保存
+            # if  (step_count % 10 == 0) and (step_count < 101):
+            if  step_count == 100:
+                fingertip_center = self.env.fingertip_center_xpos()
+                viewer.camera.set_zoom_with_fingertip_center(fingertip_center=fingertip_center)
+                save_captured_frame(
+                    frame=viewer.sync(),
+                    save_path=os.path.join(
+                        self.results_save_dir,
+                        f"lift_up_step{step_count}.png"
+                    ),
+                )
+                captured = True
+
             # -----
             if not self.time_watch.check_continue():
                 break

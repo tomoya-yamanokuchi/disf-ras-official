@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 @dataclass
 class PlotStyle:
     figsize    : Tuple[float, float] = (15.8, 3.)
-    ylabel     : str   = "Success rate"
+    ylabel     : str   = "Grasp success rate"
     xlabel     : str   = "Normalized moment"
     title      : str   = ""
     legend_ncol: int   = 3

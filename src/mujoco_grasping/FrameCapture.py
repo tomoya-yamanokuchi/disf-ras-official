@@ -13,7 +13,7 @@ class FrameCapture:
 
 
     def home(self, frame: np.ndarray):
-        import ipdb; ipdb.set_trace()
+        # import ipdb; ipdb.set_trace()
         self.save(frame, pose_name="home")
 
     def pregrasp(self, frame: np.ndarray):
@@ -28,7 +28,7 @@ class FrameCapture:
     def save(self, frame: np.ndarray, pose_name: str):
         if self.use_gui:
             return
-        import ipdb; ipdb.set_trace()
+        # import ipdb; ipdb.set_trace()
         save_path = os.path.join(self.results_save_dir, pose_name + f"_{self.model_name}" +".png")
         self._save(frame, save_path)
 

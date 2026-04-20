@@ -6,6 +6,28 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+
+from dataclasses import dataclass
+from typing import Dict, List, Optional, Tuple
+import numpy as np
+import matplotlib.pyplot as plt
+
+# -----------------------------
+# 3) Plotting implementation
+# -----------------------------
+@dataclass
+class PlotStyle:
+    figsize    : Tuple[float, float] = (15.8, 3.)
+    ylabel     : str   = "Grasp success rate"
+    # xlabel     : str   = "Normalized moment"
+    xlabel: str = "Normalized grasp-relative CoM displacement"
+    title      : str   = ""
+    legend_ncol: int   = 3
+    dpi        : int   = 300
+    bar_height : float = 0.55
+
+
+
 def load_saved_result(
     save_path: str | Path,
 ) -> dict:
@@ -110,7 +132,9 @@ def plot_multi_mass_sweep(
     else:
         target_total_masses = sorted(target_total_masses)
 
-    plt.figure(figsize = (7.5, 5.0))
+    # plt.figure(figsize = (7.5, 5.0))
+    # fig, ax = plt.subplots(figsize=(7.5, 4.0))
+    fig, ax = plt.subplots(figsize=(6, 4.0))
 
     for total_mass in target_total_masses:
         if total_mass not in grouped:
@@ -121,16 +145,19 @@ def plot_multi_mass_sweep(
             save_paths = grouped[total_mass],
         )
 
-        plt.plot(
+        ax.plot(
             x_values,
             y_values,
-            marker = "o",
-            label  = f"total mass = {total_mass:.2f}",
+            marker     = "o",
+            markersize = 8,
+            linewidth  = 1.5,
+            alpha      = 0.6,
+            label      = f"mass = {total_mass:.1f}",
         )
 
         if annotate_points:
             for x, y, condition in zip(x_values, y_values, conditions):
-                plt.annotate(
+                ax.annotate(
                     condition,
                     (x, y),
                     textcoords = "offset points",
@@ -140,18 +167,30 @@ def plot_multi_mass_sweep(
                 )
 
     # plt.xlabel("Signed normalized moment arm")
-    plt.xlabel("Normalized moment")
-    plt.ylabel("Success rate")
-    plt.ylim(-0.05, 1.05)
-    plt.grid(True)
-    plt.legend()
-    plt.tight_layout()
 
+    style = PlotStyle()
+
+    ax.set_xlabel(style.ylabel)
+    ax.set_ylabel(style.xlabel)
+    ax.set_ylim(-0.05, 1.05)
+    ax.grid(True)
+
+    ax.grid(linestyle="--", linewidth=0.5, alpha=0.6)
+
+    ax.legend(fontsize=13, loc="lower right", bbox_to_anchor=(1.0, 0.43,))
+
+    ax.set_ylabel(style.ylabel, fontsize=16)
+    ax.set_xlabel(style.xlabel, fontsize=16)
+
+    ax.set_yticklabels(ax.get_yticklabels(), fontsize=15)
+    ax.set_xticklabels(ax.get_xticklabels(), fontsize=15)
+    # ax.set_tight_layout()
+    fig.tight_layout()
 
     if output_path is not None:
         output_path = Path(output_path)
         output_path.parent.mkdir(parents = True, exist_ok = True)
-        plt.savefig(output_path, dpi = 300)
+        fig.savefig(output_path, dpi = 300)
 
     if show:
         plt.show()
@@ -162,10 +201,10 @@ def plot_multi_mass_sweep(
 if __name__ == "__main__":
     plot_multi_mass_sweep(
         # results_dir         = "./results/pose_perturbation_mass_sweep",
-        results_dir         = "/home/cudagl/dataset/RAS_results/box5/",
+        results_dir         = "/home/cudagl/dataset/RAS_results/box5_original/",
         # target_total_masses = [0.30, 0.50, 0.70],
-        target_total_masses = [0.4, 0.6, 0.8, 1.0],
-        output_path         = "/home/cudagl/dataset/RAS_results/box5/success_rate_vs_signed_normalized_moment_arm_multi_mass.png",
-        show                = True,
+        target_total_masses = [0.4, 0.6, 0.8, 1.0, 1.2],
+        output_path         = "/home/cudagl/dataset/RAS_results/box5_original/success_rate_vs_signed_normalized_moment_arm_multi_mass.pdf",
+        show                = False,
         annotate_points     = False,
     )

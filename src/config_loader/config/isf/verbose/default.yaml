@@ -6,18 +6,18 @@ visualize_call: -1 # None
 # visualize_call: 3 # ISF init & opt
 # visualize_call: 4 #
 # --------------------------
-# textlog:
-#   criteria : False #False
-#   error    : False # False
-#   Rt_update: False
-#   ipfo     : False
-#   isf      : True # False
-#   gpa      : False
-
 textlog:
   criteria : False #False
   error    : False # False
   Rt_update: False
   ipfo     : False
-  isf      : False # False
+  isf      : True # False
   gpa      : False
+
+# textlog:
+#   criteria : False #False
+#   error    : False # False
+#   Rt_update: False
+#   ipfo     : False
+#   isf      : False # False
+#   gpa      : False

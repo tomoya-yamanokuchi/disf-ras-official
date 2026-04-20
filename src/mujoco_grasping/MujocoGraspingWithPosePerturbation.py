@@ -187,7 +187,7 @@ class MujocoGraspingWithPosePerturbation:
             self.do_pre_grasp.execute(viewer, t_WG_pre, quat_WG_pre)
             self.do_stay_here.execute(viewer, stay_step=self.stay_step.pre_grasp)
             self.frame_capture.pregrasp(frame=viewer.sync())
-            # import ipdb; ipdb.set_trace()
+            import ipdb; ipdb.set_trace()
             # ----- (2) grasp -----
             self.do_optimal_grasp.execute(viewer, t_WG_opt, quat_WG_opt)
             self.do_stay_here.execute(viewer, stay_step=self.stay_step.optimal_reach)
